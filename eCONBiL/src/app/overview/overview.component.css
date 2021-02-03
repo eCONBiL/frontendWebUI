@@ -1,0 +1,123 @@
+.example-container {
+    position: absolute;
+    top: 73px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-family: "Roboto";
+    color: black;
+  }
+
+  
+  .example-sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    background: #deedff18;
+  }
+
+  .main-content {
+      background: rgb(255, 255, 255);
+      padding-left: 10px;
+      font-family: "Roboto";
+  }
+  
+  .example-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .sidenav-container {
+    height: 750px;
+  }                                   
+
+  .example-form {
+    min-width: 150px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+  
+
+  .grid-layout{
+    margin-top: 20px;
+    margin-left: 5%;
+    margin-right: 7%;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: auto;
+    
+}
+
+.title{
+    font-family: "Roboto";
+    margin-top: 20px;
+    margin-left: 5%;
+    align-content: center;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    /* grid-template-columns: repeat(2,1fr); */
+    /* grid-template-rows: 100px 100px 100px; */
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+    align-self: center;
+}
+
+.section1{
+    grid-row: 1 ;
+    /* background-color: blue; */
+}
+
+.section2{
+    grid-column: 1;
+    grid-row: 2 ;
+    
+}
+
+.section3{
+    grid-row: 1;
+    grid-column: 2;
+    
+}
+
+.submitButton {
+  background-color: #deedff18;
+  margin-top: 1.5%;
+}
+
+fieldset{
+  width: 90%;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+
+legend{
+    color: #0474cf;
+}
+
+.listButton{
+  border: none;
+  width: 100%;
+  background:  #ffffff00;
+  height: 100%;
+}
+
+.listButton:focus{
+  outline: none;
+  width: 100%;
+  background:  #ffffff00;
+}
