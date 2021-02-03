@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BL } from '../shared/bl';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
+import { SingleBL } from '../shared/singleBL';
+import { responseFormat } from '../shared/responseFormat';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +35,50 @@ export class DataService {
              record: {
               ...item.Record,
 
+              blNumber: item.Record.BLNumber,
+            dateOfIssue: item.Record.DateOfIssue,
+            placeOfIssue: item.Record.PlaceOfIssue,
+            numberOfBLIssued: item.Record.NumberOfBLIssued,
+            shipperName: item.Record.ShipperName,
+            shipperAddress: item.Record.ShipperAddress,
+            shipperContact: item.Record.ShipperContact,
+            shipperLegalForm: item.Record.ShipperLegalForm,
+            consigneeName: item.Record.ConsigneeName,
+            consigneeAddress: item.Record.ConsigneeAddress,
+            consigneeContact: item.Record.ConsigneeContact,
+            consigneeLegalForm: item.Record.ConsigneeLegalForm,
+            carrierName: item.Record.CarrierName,
+            carrierAddress: item.Record.CarrierAddress,
+            carrierContact: item.Record.CarrierContact,
+            carrierLegalForm: item.Record.CarrierLegalForm,
+            carrierTrailerNumber: item.Record.CarrierTrailerNumber,
+            agentCompanyName: item.Record.AgentCompanyName,
+            agentCompanyLegalForm: item.Record.AgentCompanyLegalForm,
+            agentCompanyAddress: item.Record.AgentCompanyAddress,
+            notifyPartyCompanyName: item.Record.NotifyPartyCompanyName,
+            notifyPartyCompanyAddress: item.Record.NotifyPartyCompanyAddress,
+            notifyPartyCompanyLegalForm: item.Record.NotifyPartyCompanyLegalForm,
+            notifyPartySameAs: item.Record.NotifyPartySameAs,
+            incoterms: item.Record.Incoterms,
+            freightChargesCurrency: item.Record.FreightChargesCurrency,
+            prepaid: item.Record.Prepaid,
+            collect: item.Record.Collect,
+            portOfLoading: item.Record.PartOfLoading,
+            portOfDischarge: item.Record.PortOfDischarge,
+            placeOfReceipt: item.Record.PlaceOfReceipt,
+            placeOfDelivery: item.Record.PlaceOfDelivery,
+            oceanVesselName: item.Record.OceanVesselName,
+            containerNumber: item.Record.ContainerNumber,
+            fullContainerLoad: item.Record.FullContainerLoad, 
+            lessThenContainerLoad: item.Record.LessThenContainerLoad,
+            dateofReceived: item.Record.DateofReceived,
+            shippedOnBoardDate: item.Record.ShippedOnBoardDate,
+            marksAndNumbers: item.Record.MarksAndNumbers,
+            numberOfPackages: item.Record.NumberOfPackages,
+            grossWeight: item.Record.GrossWeight,
+            grossWeightUnit: item.Record.GrossWeightUnit,
+            descriptionOfGoods: item.Record.DescriptionOfGoods
+              
             }
         };
         });
@@ -44,30 +90,117 @@ export class DataService {
 
   getSingleBL(blKey): Observable<BL>{
     return this.http.get<any>(this.apiURL + "/singleBL/" + blKey)
-    // .pipe(
-    //   map(res => {
-    //      return res.map(item => { 
-    //        return {
-    //           ...item,
- 
-    //           key: item.Key,
- 
-    //           record: {
-    //            ...item.Record,
- 
-    //          }
-    //      };
-    //      });
-    //    }),
-    //    retry(1),
-    //    catchError(this.handleError)
-    //  )
+    .pipe(
+     map(item => {
+      return {
+        ...item,
+
+        key: item.Key,
+
+        record: {
+         ...item.Record,
+
+          blNumber: item.Record.BLNumber,
+          dateOfIssue: item.Record.DateOfIssue,
+          placeOfIssue: item.Record.PlaceOfIssue,
+          numberOfBLIssued: item.Record.NumberOfBLIssued,
+          shipperName: item.Record.ShipperName,
+          shipperAddress: item.Record.ShipperAddress,
+          shipperContact: item.Record.ShipperContact,
+          shipperLegalForm: item.Record.ShipperLegalForm,
+          consigneeName: item.Record.ConsigneeName,
+          consigneeAddress: item.Record.ConsigneeAddress,
+          consigneeContact: item.Record.ConsigneeContact,
+          consigneeLegalForm: item.Record.ConsigneeLegalForm,
+          carrierName: item.Record.CarrierName,
+          carrierAddress: item.Record.CarrierAddress,
+          carrierContact: item.Record.CarrierContact,
+          carrierLegalForm: item.Record.CarrierLegalForm,
+          carrierTrailerNumber: item.Record.CarrierTrailerNumber,
+          agentCompanyName: item.Record.AgentCompanyName,
+          agentCompanyLegalForm: item.Record.AgentCompanyLegalForm,
+          agentCompanyAddress: item.Record.AgentCompanyAddress,
+          notifyPartyCompanyName: item.Record.NotifyPartyCompanyName,
+          notifyPartyCompanyAddress: item.Record.NotifyPartyCompanyAddress,
+          notifyPartyCompanyLegalForm: item.Record.NotifyPartyCompanyLegalForm,
+          notifyPartySameAs: item.Record.NotifyPartySameAs,
+          incoterms: item.Record.Incoterms,
+          freightChargesCurrency: item.Record.FreightChargesCurrency,
+          prepaid: item.Record.Prepaid,
+          collect: item.Record.Collect,
+          portOfLoading: item.Record.PartOfLoading,
+          portOfDischarge: item.Record.PortOfDischarge,
+          placeOfReceipt: item.Record.PlaceOfReceipt,
+          placeOfDelivery: item.Record.PlaceOfDelivery,
+          oceanVesselName: item.Record.OceanVesselName,
+          containerNumber: item.Record.ContainerNumber,
+          fullContainerLoad: item.Record.FullContainerLoad, 
+          lessThenContainerLoad: item.Record.LessThenContainerLoad,
+          dateofReceived: item.Record.DateofReceived,
+          shippedOnBoardDate: item.Record.ShippedOnBoardDate,
+          marksAndNumbers: item.Record.MarksAndNumbers,
+          numberOfPackages: item.Record.NumberOfPackages,
+          grossWeight: item.Record.GrossWeight,
+          grossWeightUnit: item.Record.GrossWeightUnit,
+          descriptionOfGoods: item.Record.DescriptionOfGoods
+       }
+   };
+      }),
+      retry(1),
+      catchError(this.handleError)
+    )
   }
 
-//  setNewOwner(carIndex, newOwner): Observable<any>{
-//     return this.httpClient.put<any>(this.REST_API_SERVER + "changeowner/" + carIndex +"/" + newOwner, httpOptions);
-//   }
 
+  createBL(bl:string) {
+     console.log(bl)
+    this.http.post<any>(this.apiURL + '/createBL', {       
+      "BLNumber": "MC QTSP GHA",
+      "DateOfIssue": "hgsf",
+      "PlaceOfIssue": "Bremerhaven",
+      "NumberOfBLIssued": 2,
+      "ShipperName": "Autohaus Main GmbH",
+      "ShipperAddress": "Hanauerlandstr. 3460314 Frankfurt, Germany",
+      "ShipperContact": "ahmain@beispiel.de",
+      "ShipperLegalForm": "GmbH",
+      "ConsigneeName": "German-Cars Ldt.",
+      "ConsigneeAddress": "Fue Avenue, A1 518108 Shanghai, China",
+      "ConsigneeContact": "86282452253",
+      "ConsigneeLegalForm": "Ldt.",
+      "CarrierName": "MSC Germany S.A. & Co. KG",
+      "CarrierAddress": "Hafenstraße 55, 282127 Bremen, Germany",
+      "CarrierContact": "deu-bremen@msc.de",
+      "CarrierLegalForm": "S.A. & Co. KG",
+      "CarrierTrailerNumber": "HB-KK-596",
+      "AgentCompanyName": "BLG AutoTerminal Bremerhaven GmbH & Co. KG",
+      "AgentCompanyLegalForm": "GmbH & Co. KG",
+      "AgentCompanyAddress": "Senator-Borttscheller-Str. 1, 27568 Bremerhaven, Germany",
+      "NotifyPartyCompanyName": "German-Cars Ldt.",
+      "NotifyPartyCompanyAddress": "Fue Avenue, A1 518108 Shanghai, China",
+      "NotifyPartyCompanyLegalForm": "Ldt.",
+      "NotifyPartySameAs": true,
+      "Incoterms": "FOB (2020)",
+      "FreightChargesCurrency": "USD",
+      "Prepaid": true,
+      "Collect": true,
+      "PortOfLoading": "Bremerhaven Containerterminal",
+      "PortOfDischarge": "Shanghai Yangshan",
+      "PlaceOfReceipt": "Frankfurt am Main, Adresse, Germany",
+      "PlaceOfDelivery": "Shanghai, Adresse, China",
+      "OceanVesselName": "MSC Gulsun",
+      "ContainerNumber": "OOLU1548378",
+      "FullContainerLoad": true,
+      "LessThenContainerLoad": false,
+      "DateofReceived": "08.02.2020",
+      "ShippedOnBoardDate": "09.02.2020",
+      "MarksAndNumbers": "40' steel Dry Cargo Container No CSQU3054383",
+      "NumberOfPackages": 15,
+      "GrossWeight": 4250,
+      "GrossWeightUnit": "Kg",
+      "DescriptionOfGoods": "engines and fitting engine parts packaged together on pallets"
+},this.httpOptions)
+    .subscribe({ error: e => console.error(e) });
+  }
 
   handleError(error) {
     let errorMessage = '';

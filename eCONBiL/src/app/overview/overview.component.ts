@@ -26,17 +26,28 @@ export class OverviewComponent implements OnInit {
     return this.dataService.getAllBL().subscribe((data: BL[]) => {
       this.bls = data;
       console.log(this.bls)
+      console.log(this.bls[1].record.carrierTrailerNumber)
+      console.log(this.bls[1].record.consigneeContact)
+      console.log(this.bls[1].record.fullContainerLoad)
+      console.log(this.bls[1].record.incoterms)
     })
   }
 
   loadSingleBL() {
-    return this.dataService.getSingleBL(this.blKey).subscribe((data: BL) => {
+    return this.dataService.getSingleBL(this.blKey).subscribe((data: any) => {
       this.bl = data;
       console.log(this.bl)
-      console.log(this.bl.record.blNumber)
+      console.log(typeof(this.bl))
     })
+  }
+
+  testSingleBL() {
+  
+      console.log(this.bl.record.notifyPartyCompanyName)
+      console.log(typeof(this.bl))
+    }
   }
 
   
 
-}
+

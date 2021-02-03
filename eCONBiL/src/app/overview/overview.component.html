@@ -2,7 +2,7 @@
     <mat-sidenav #sidenav mode="side" opened class="example-sidenav"  >
         <mat-nav-list *ngIf="bls">
         <mat-list-item *ngFor="let bl of bls">
-            <button class="listButton">  {{bl.key}} </button>
+            <button class="listButton">  {{bl.record.blNumber}} </button>
         </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
@@ -11,6 +11,7 @@
             <input type="text" [(ngModel)]="blKey" class="form-control" placeholder="Key">
         </div>
         <button (click)="loadSingleBL()"></button>
+        <button (click)="testSingleBL()"></button>
     </mat-sidenav-content>
 </mat-sidenav-container>
 

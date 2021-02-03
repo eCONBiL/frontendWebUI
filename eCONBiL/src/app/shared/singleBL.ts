@@ -1,4 +1,4 @@
-export interface SingleBL {
+export class SingleBL {
     
     blNumber: string;
     dateOfIssue: string;
