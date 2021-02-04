@@ -6,7 +6,7 @@ import { ChangeComponent } from './change/change.component'
 import { AboutComponent } from './about/about.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'overview', pathMatch: 'full'},
   { path: 'overview', component: OverviewComponent },
   { path: 'newBillOfLading', component: NewComponent },
   { path: 'changeBillOfLading', component: ChangeComponent },

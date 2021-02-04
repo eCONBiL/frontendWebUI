@@ -43,5 +43,20 @@ export class SingleBL {
     grossWeight: number;
     grossWeightUnit: string;
     descriptionOfGoods: string;
+    descriptionPerPackage: string;
+    measurement: number;
+    measurementUnit: string;
+    declaredCargoValueAmount: number;
+    declaredCargoValueCurrency: string;
+    additionalInformation: string;
+    hazardousMaterial: boolean;
+    customerOrderNumber: number;
+    transportConditions: string;
+    applieableLaw: string;
+    placeOfJurisdiction: string;
+    orderDate: string;
+    orderTo: string;
+    orderAt: string;
+    blTransferable: boolean;
     
 }

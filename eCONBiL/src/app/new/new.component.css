@@ -12,9 +12,13 @@ input[type=text]:focus {
     box-shadow: 0 0 5px lightgrey;
 }
 
-/* mat-grid-list{
-    margin:10px 10px 10px 10px
-} */
+#fcl{
+    margin-left: 60px;
+}
+
+#lcl{
+    margin-left: 25px;
+}
 
 mat-card {
     margin: 10px 10px 10px 10px;
@@ -27,20 +31,10 @@ mat-card-title{
 #grid-container{
     display: grid;
     grid-template-columns: 1fr 1fr ;
-    grid-gap: 25px;
+    grid-gap: 5px;
     padding-left: 200px;
     padding-right: 200px;
-    padding-top: 10px;
-}
-
-.shipper{
-    grid-row: 1 /span 2; 
-}
-
-.bookingNo{
-}
-
-.blNumber{
+    padding-top: 20px;
 }
  
 hr {
@@ -50,9 +44,27 @@ hr {
 form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
+    grid-column-gap: 5px;
     margin: 0 20px 20px 20px;
     box-sizing: border-box;
+}
+
+
+.generellInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.transportInfo{
+    grid-column: 1 / 2 span;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+
+mat-form-field{
+    grid-column: 1/3;
 }
 
 label {
@@ -72,7 +84,7 @@ label {
     margin: 0;
     color: limegreen;
 }
-.layout-shippername, .layout-error {
+.layout-shippername, .layout-shipperaddress, .layout-shippercontact, .layout-shipperlegalform, .layout-blnumber, .layout-blIssued, .layout-dateIssued, .layout-placeIssue, .layout-consigneename, .layout-consigneeaddress, .layout-consigneecontact, .layout-consigneelegalform, .layout-agentCname, .layout-agentCaddress, .layout-agentClegalform, .layout-notifyPname, .layout-notifyPaddress, .layout-notifyPlegalform, .layout-consigneeaddress, .layout-portLoading, .layout-portDischarge, .layout-placeReceipt, .layout-placeDelivery, .layout-oceanVessel, .layout-placeContainer, .layout-error {
     grid-column: 1/3;
 }
 .layout-error {

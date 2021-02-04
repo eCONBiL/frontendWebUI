@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Observable } from 'rxjs';
 import { BL } from '../shared/bl';
+import { SingleBL } from '../shared/singleBL';
 
 @Component({
   selector: 'app-overview',
@@ -13,7 +14,7 @@ export class OverviewComponent implements OnInit {
   @Input() blKey = ""
 
   bls: BL[] | undefined = undefined;
-  bl: BL | undefined = undefined;
+  bl: SingleBL| undefined = undefined;
 
   constructor(public dataService: DataService) {}
 
@@ -43,7 +44,7 @@ export class OverviewComponent implements OnInit {
 
   testSingleBL() {
   
-      console.log(this.bl.record.notifyPartyCompanyName)
+      console.log(this.bl.notifyPartyCompanyName)
       console.log(typeof(this.bl))
     }
   }

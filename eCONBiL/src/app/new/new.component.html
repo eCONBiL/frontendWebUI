@@ -182,7 +182,7 @@
   
     </div>
   </div> -->
-  <button  (click)="addBL()">Create BL</button>
+  <!-- <button  (click)="addBL()">Create BL</button> -->
 <!-- <mat-grid-list cols="2" rowHeight="1:1">
     <mat-grid-tile>
       <mat-card>
@@ -191,7 +191,7 @@
         
           <div class="layout-recipient">
               <label for="recipient">Recipient</label>
-              <input type="text" id="recipient" name="recipient" placeholder="Recipient name">
+              <input type="text" id="recipient" name="recipient">
               <p id="errRecipient" class="errMsg"></p>
           </div>
           
@@ -253,87 +253,351 @@
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile>3</mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile> 
 </mat-grid-list> -->
 
-<!-- <div id="grid-container">
+
+ <div id="grid-container">
   <mat-card class="shipper">
     <mat-card-title>SHIPPEREXPORTER</mat-card-title>
     <hr>
     <form>    
       <div class="layout-shippername">
-          <label for="recipient">shipper name</label>
-          <input type="text" [(ngModel)]="blDetails.shipperName" class="form-control" placeholder="Shipper name">
-          <p id="errRecipient" class="errMsg"></p>
+          <label>shipper name</label>
+          <input type="text" [(ngModel)]="blDetails.shipperName" class="form-control" [ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
       </div>
       
-      <div class="layout-street-name">
-          <label for="street-name">shipper address</label>
-          <input type="text" [(ngModel)]="blDetails.shipperAddress" class="form-control" placeholder="Shipper address">
-          <p id="errStreetName" class="errMsg"></p>
+      <div class="layout-shipperaddress">
+          <label>shipper address</label>
+          <input type="text" [(ngModel)]="blDetails.shipperAddress" class="form-control" [ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
       </div>
       
-      <div class="layout-street-number">
-          <label for="street-number">shipper contact</label>
-          <input type="text" [(ngModel)]="blDetails.shipperContact" class="form-control" placeholder="Shipper contact">
-          <p id="errStreetNumber" class="errMsg"></p>
+      <div class="layout-shippercontact">
+          <label>shipper contact</label>
+          <input type="text" [(ngModel)]="blDetails.shipperContact" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
       </div>
       
-      <div class="layout-city">
-          <label for="city">shipper legalform</label>
-          <input type="text" [(ngModel)]="blDetails.shipperLegalForm" class="form-control" placeholder="Shipper legalform">
-          <p id="errCity" class="errMsg"></p>
-      </div> -->
-      
-      <!-- <div class="layout-country">
-          <label for="country">Country</label>
-          <select id="country" name="country">
-                <option value="Germany" selected>Germany</option>
-                <option value="France">France</option>
-                <option value="Netherlands">Netherlands</option>
-                <option value="Spain">Spain</option>
-          </select>
-          <p id="errCountry" class="errMsg"></p>
-      </div> -->
-        
-      <!-- <input type="button" id="submit" value="Save changes"> -->
-      
-      <!-- <div class="layout-error">
+      <div class="layout-shipperlegalform">
+          <label>shipper legalform</label>
+          <input type="text" [(ngModel)]="blDetails.shipperLegalForm" class="form-control"[ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
+      </div> 
+             
+      <div class="layout-error">
           <p class="sccMsg"></p>
-          <p id="errSubmit" class="errMsg"></p>
+          <p class="errMsg"></p>
       </div>
     </form>
   </mat-card>
+
+
+  <div class="generellInfo">
   <mat-card class="blNumber">
-    <mat-card-title>Bill of lading number</mat-card-title>
+    <mat-card-title>BILL OF LADING NUMBER</mat-card-title>
     <hr>
     <form>
-      <div class="layout-recipient">
-          <label for="recipient">Bill of lading number</label>
-          <input type="text" [(ngModel)]="blDetails.blNumber" class="form-control" placeholder="Bill of lading number">
-          <p id="errRecipient" class="errMsg"></p>
+      <div class="layout-blnumber">
+          <label >Bill of lading number</label>
+          <input type="text" [(ngModel)]="blDetails.blNumber" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
       </div>
       
       <div class="layout-error">
           <p class="sccMsg"></p>
-          <p id="errSubmit" class="errMsg"></p>
+          <p class="errMsg"></p>
       </div>
     </form>
   </mat-card>
-  <mat-card class="bookingNo">
-    <mat-card-title>Booking number</mat-card-title>
+  <mat-card class="blIssued">
+    <mat-card-title>NUMBER OF B/L ISSUED</mat-card-title>
     <hr>
     <form>
-      <div class="layout-recipient">
-          <label for="recipient">Booking number</label>
-          <input type="text" [(ngModel)]="blDetails.blNumber" class="form-control" placeholder="Booking number">
-          <p id="errRecipient" class="errMsg"></p>
+      <div class="layout-blIssued">
+          <label>number of B/L issued</label>
+          <input type="text" [(ngModel)]="blDetails.numberOfBLIssued" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
       </div>
       
       <div class="layout-error">
           <p class="sccMsg"></p>
-          <p id="errSubmit" class="errMsg"></p>
+          <p class="errMsg"></p>
       </div>
     </form>
   </mat-card>
-</div> -->
+  <mat-card class="dateIssue">
+    <mat-card-title>DATE OF ISSUE</mat-card-title>
+    <hr>
+    <form>
+      <div class="layout-dateIssued">
+          <label>date of issue</label>
+          <input type="text" [(ngModel)]="blDetails.dateOfIssue" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-error">
+          <p class="sccMsg"></p>
+          <p class="errMsg"></p>
+      </div>
+    </form>
+  </mat-card>
+  <mat-card class="placeIssue">
+    <mat-card-title>PLACE OF ISSUE</mat-card-title>
+    <hr>
+    <form>
+      <div class="layout-placeIssue">
+          <label>place of issue</label>
+          <input type="text" [(ngModel)]="blDetails.placeOfIssue" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-error">
+          <p class="sccMsg"></p>
+          <p class="errMsg"></p>
+      </div>
+    </form>
+  </mat-card>
+</div>
+
+  <mat-card class="consignee">
+    <mat-card-title>CONSIGNEE</mat-card-title>
+    <hr>
+    <form>    
+      <div class="layout-consigneename">
+          <label>consignee name</label>
+          <input type="text" [(ngModel)]="blDetails.consigneeName" class="form-control"[ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-consigneeaddress">
+          <label>consignee address</label>
+          <input type="text" [(ngModel)]="blDetails.consigneeAddress" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-consigneecontact">
+          <label>consignee contact</label>
+          <input type="text" [(ngModel)]="blDetails.consigneeContact" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-consigneelegalform">
+          <label >consignee legalform</label>
+          <input type="text" [(ngModel)]="blDetails.consigneeLegalForm" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
+      </div> 
+             
+      <div class="layout-error">
+          <p class="sccMsg"></p>
+          <p class="errMsg"></p>
+      </div>
+    </form>
+  </mat-card>
+
+  <div></div>
+
+  <mat-card class="forwardingACompany">
+    <mat-card-title>FORWARDING AGENT COMPANY</mat-card-title>
+    <hr>
+    <form>    
+      <div class="layout-agentCname">
+          <label >Agent Company Name</label>
+          <input type="text" [(ngModel)]="blDetails.agentCompanyName" class="form-control"[ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-agentCaddress">
+          <label >agent company address</label>
+          <input type="text" [(ngModel)]="blDetails.agentCompanyAddress" class="form-control"[ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-agentClegalform">
+          <label>agent company legalform</label>
+          <input type="text" [(ngModel)]="blDetails.agentCompanyLegalForm" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-error">
+          <p class="sccMsg"></p>
+          <p class="errMsg"></p>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-card class="notifyparty">
+    <mat-card-title>NOTIFY PARTY</mat-card-title>
+    <hr>
+    <form>    
+      <div class="layout-notifyPname">
+          <label>notify party company name</label>
+          <input type="text" [(ngModel)]="blDetails.notifyPartyCompanyName" class="form-control"[ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-notifyPaddress">
+          <label >notify party companyaddress</label>
+          <input type="text" [(ngModel)]="blDetails.notifyPartyCompanyAddress" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-notifyPlegalform">
+          <label>notify party company legalform</label>
+          <input type="text" [(ngModel)]="blDetails.notifyPartyCompanyLegalForm" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p  class="errMsg"></p>
+      </div>
+      
+      <!-- <div class="layout-notifyPsameAs">
+          <label>notify party company sames as</label>
+          <input type="text" [(ngModel)]="blDetails.notifyPartySameAs" class="form-control" >
+          <p class="errMsg"></p>
+      </div>  -->
+             
+      <div class="layout-error">
+          <p class="sccMsg"></p>
+          <p class="errMsg"></p>
+      </div>
+    </form>
+  </mat-card>
+
+  <div class="transportInfo">
+    <mat-card class="portloading">
+      <mat-card-title>PORT OF LOADING</mat-card-title>
+      <hr>
+      <form>
+        <div class="layout-portLoading">
+            <label >PORT OF LOADING</label>
+            <input type="text" [(ngModel)]="blDetails.portOfLoading" class="form-control" [ngModelOptions]="{standalone: true}">
+            <p class="errMsg"></p>
+        </div>
+        
+        <div class="layout-error">
+            <p class="sccMsg"></p>
+            <p class="errMsg"></p>
+        </div>
+      </form>
+    </mat-card>
+
+    <mat-card class="portDischarge">
+      <mat-card-title>PORT OF DISCHARGE</mat-card-title>
+      <hr>
+      <form>
+        <div class="layout-portDischarge">
+            <label >PORT OF Discharge</label>
+            <input type="text" [(ngModel)]="blDetails.portOfDischarge" class="form-control" [ngModelOptions]="{standalone: true}">
+            <p class="errMsg"></p>
+        </div>
+        
+        <div class="layout-error">
+            <p class="sccMsg"></p>
+            <p class="errMsg"></p>
+        </div>
+      </form>
+    </mat-card>
+
+    <mat-card class="placeReceipt">
+      <mat-card-title>PLACE OF RECEIPT</mat-card-title>
+      <hr>
+      <form>
+        <div class="layout-placeReceipt">
+            <label >PORT OF Receipt</label>
+            <input type="text" [(ngModel)]="blDetails.placeOfReceipt" class="form-control" [ngModelOptions]="{standalone: true}">
+            <p class="errMsg"></p>
+        </div>
+        
+        <div class="layout-error">
+            <p class="sccMsg"></p>
+            <p class="errMsg"></p>
+        </div>
+      </form>
+    </mat-card>
+
+    <mat-card class="placeDelivery">
+      <mat-card-title>PLACE OF DELIVERY</mat-card-title>
+      <hr>
+      <form>
+        <div class="layout-placeDelivery">
+            <label >PORT OF delivery</label>
+            <input type="text" [(ngModel)]="blDetails.placeOfDelivery" class="form-control"[ngModelOptions]="{standalone: true}" >
+            <p class="errMsg"></p>
+        </div>
+        
+        <div class="layout-error">
+            <p class="sccMsg"></p>
+            <p class="errMsg"></p>
+        </div>
+      </form>
+    </mat-card>
+
+    <mat-card class="oceanVessel">
+      <mat-card-title>OCEAN VESSEL</mat-card-title>
+      <hr>
+      <form>
+        <div class="layout-oceanVessel">
+            <label >ocean vessel name</label>
+            <input type="text" [(ngModel)]="blDetails.oceanVesselName" class="form-control" [ngModelOptions]="{standalone: true}">
+            <p class="errMsg"></p>
+        </div>
+        
+        <div class="layout-error">
+            <p class="sccMsg"></p>
+            <p class="errMsg"></p>
+        </div>
+      </form>
+    </mat-card>
+
+    <mat-card class="container">
+      <mat-card-title>CONTAINER</mat-card-title>
+      <hr>
+      <form>
+        <div class="layout-placeContainer">
+            <label >CONTAINER NUMBER</label>
+            <input type="text" [(ngModel)]="blDetails.containerNumber" class="form-control"[ngModelOptions]="{standalone: true}" >
+            <p class="errMsg"></p>
+        </div>
+        
+        <div class="layout-error">
+            <p class="sccMsg"></p>
+            <p class="errMsg"></p>
+        </div>
+      </form>
+    </mat-card>
+
+  <mat-card class="containerload">
+    <mat-card-title>CONTAINER LOAD</mat-card-title>
+    <hr>
+    <form>
+      <div class="layout-placeContainer">
+        <label for="fcl">Full container load</label>
+        <input type="radio" id="fcl" name="containerLoad" value="fullContainerLoad" (click)="checkContainerLoad('fullContainerLoad')"ngModel>
+        <p></p>
+        <label>Less than container load </label> 
+        <input type="radio" id="lcl" name="containerLoad" value="lessThanContainerLoad" (click)="checkContainerLoad('lessThanContainerLoad')" ngModel>
+     </div>
+    </form>
+  </mat-card>
+
+
+  <mat-card class="containerload">
+    <mat-card-title>DATE</mat-card-title>
+    <hr>
+    <mat-form-field appearance="fill" class="example-form-field">
+      <mat-label>CARGO RECEIVED DATE</mat-label>
+      <input matInput [matDatepicker]="datepicker">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+      </mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="example-form-field">
+      <mat-label>SHIPPED ON BOARD DATE</mat-label>
+      <input matInput [matDatepicker]="datepicker2" >
+      <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker2>
+      </mat-datepicker>
+    </mat-form-field>
+  </mat-card>
+</div>
+<button type="submit" id="submit" (click)="addBL()">Create B/L</button> 
+</div>
