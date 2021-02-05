@@ -12,6 +12,15 @@ input[type=text]:focus {
     box-shadow: 0 0 5px lightgrey;
 }
 
+input[type=date]{
+    outline: none;
+    margin-left: 20px;
+}
+
+input#cargoRDate {
+    margin-left: 33px;
+}
+
 #fcl{
     margin-left: 60px;
 }

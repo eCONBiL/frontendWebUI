@@ -581,22 +581,27 @@
 
 
   <mat-card class="containerload">
-    <mat-card-title>DATE</mat-card-title>
+    <mat-card-title>DATES OF TRANSPORT</mat-card-title>
     <hr>
-    <mat-form-field appearance="fill" class="example-form-field">
+    <label for="cargoRDate">CARGO RECEIVED DATE</label>
+    <input type="date" id="cargoRDate" name="cargoRDate">
+    <!-- <mat-form-field appearance="fill" class="example-form-field">
       <mat-label>CARGO RECEIVED DATE</mat-label>
       <input matInput [matDatepicker]="datepicker">
       <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
       <mat-datepicker #datepicker>
       </mat-datepicker>
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="example-form-field">
+    </mat-form-field> -->
+    <!-- <mat-form-field appearance="fill" class="example-form-field">
       <mat-label>SHIPPED ON BOARD DATE</mat-label>
       <input matInput [matDatepicker]="datepicker2" >
       <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
       <mat-datepicker #datepicker2>
       </mat-datepicker>
-    </mat-form-field>
+    </mat-form-field> -->
+    <p>
+    <label for="shippedOBoard">SHIPPED ON BOARD DATE</label>
+    <input type="date" id="shippedOBoard" name="shippedOBoard">
   </mat-card>
 </div>
 <button type="submit" id="submit" (click)="addBL()">Create B/L</button> 
