@@ -27,10 +27,10 @@ export class OverviewComponent implements OnInit {
     return this.dataService.getAllBL().subscribe((data: BL[]) => {
       this.bls = data;
       console.log(this.bls)
-      console.log(this.bls[1].record.carrierTrailerNumber)
-      console.log(this.bls[1].record.consigneeContact)
-      console.log(this.bls[1].record.fullContainerLoad)
-      console.log(this.bls[1].record.incoterms)
+      console.log(this.bls[0].record.carrierTrailerNumber)
+      console.log(this.bls[0].record.consigneeContact)
+      console.log(this.bls[0].record.fullContainerLoad)
+      console.log(this.bls[0].record.incoterms)
     })
   }
 

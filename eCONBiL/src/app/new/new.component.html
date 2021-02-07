@@ -396,30 +396,40 @@
     </form>
   </mat-card>
 
-  <div></div>
-
-  <mat-card class="forwardingACompany">
-    <mat-card-title>FORWARDING AGENT COMPANY</mat-card-title>
+  <mat-card class="carrier">
+    <mat-card-title>CARRIER</mat-card-title>
     <hr>
     <form>    
-      <div class="layout-agentCname">
-          <label >Agent Company Name</label>
-          <input type="text" [(ngModel)]="blDetails.agentCompanyName" class="form-control"[ngModelOptions]="{standalone: true}" >
+      <div class="layout-carriername">
+          <label>carrier name</label>
+          <input type="text" [(ngModel)]="blDetails.carrierName" class="form-control" [ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
+      </div>
+
+      <div class="layout-carriertrailerNumber">
+        <label>carrier trailer number</label>
+        <input type="text" [(ngModel)]="blDetails.carrierTrailerNumber" class="form-control" [ngModelOptions]="{standalone: true}" >
+        <p class="errMsg"></p>
+    </div>
+      
+      <div class="layout-carrieraddress">
+          <label>carrier address</label>
+          <input type="text" [(ngModel)]="blDetails.carrierAddress" class="form-control" [ngModelOptions]="{standalone: true}" >
           <p class="errMsg"></p>
       </div>
       
-      <div class="layout-agentCaddress">
-          <label >agent company address</label>
-          <input type="text" [(ngModel)]="blDetails.agentCompanyAddress" class="form-control"[ngModelOptions]="{standalone: true}" >
+      <div class="layout-carriercontact">
+          <label>carrier contact</label>
+          <input type="text" [(ngModel)]="blDetails.carrierContact" class="form-control" [ngModelOptions]="{standalone: true}">
           <p class="errMsg"></p>
       </div>
       
-      <div class="layout-agentClegalform">
-          <label>agent company legalform</label>
-          <input type="text" [(ngModel)]="blDetails.agentCompanyLegalForm" class="form-control" [ngModelOptions]="{standalone: true}">
+      <div class="layout-carrierlegalform">
+          <label>carrier legalform</label>
+          <input type="text" [(ngModel)]="blDetails.carrierLegalForm" class="form-control"[ngModelOptions]="{standalone: true}" >
           <p class="errMsg"></p>
-      </div>
-      
+      </div> 
+             
       <div class="layout-error">
           <p class="sccMsg"></p>
           <p class="errMsg"></p>
@@ -455,6 +465,35 @@
           <p class="errMsg"></p>
       </div>  -->
              
+      <div class="layout-error">
+          <p class="sccMsg"></p>
+          <p class="errMsg"></p>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-card class="forwardingACompany">
+    <mat-card-title>FORWARDING AGENT COMPANY</mat-card-title>
+    <hr>
+    <form>    
+      <div class="layout-agentCname">
+          <label >Agent Company Name</label>
+          <input type="text" [(ngModel)]="blDetails.agentCompanyName" class="form-control"[ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-agentCaddress">
+          <label >agent company address</label>
+          <input type="text" [(ngModel)]="blDetails.agentCompanyAddress" class="form-control"[ngModelOptions]="{standalone: true}" >
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-agentClegalform">
+          <label>agent company legalform</label>
+          <input type="text" [(ngModel)]="blDetails.agentCompanyLegalForm" class="form-control" [ngModelOptions]="{standalone: true}">
+          <p class="errMsg"></p>
+      </div>
+      
       <div class="layout-error">
           <p class="sccMsg"></p>
           <p class="errMsg"></p>
@@ -580,29 +619,346 @@
   </mat-card>
 
 
-  <mat-card class="containerload">
+  <!-- empty in first create
+    
+    <mat-card class="containerload">
     <mat-card-title>DATES OF TRANSPORT</mat-card-title>
     <hr>
     <label for="cargoRDate">CARGO RECEIVED DATE</label>
     <input type="date" id="cargoRDate" name="cargoRDate">
-    <!-- <mat-form-field appearance="fill" class="example-form-field">
-      <mat-label>CARGO RECEIVED DATE</mat-label>
-      <input matInput [matDatepicker]="datepicker">
-      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-      <mat-datepicker #datepicker>
-      </mat-datepicker>
-    </mat-form-field> -->
-    <!-- <mat-form-field appearance="fill" class="example-form-field">
-      <mat-label>SHIPPED ON BOARD DATE</mat-label>
-      <input matInput [matDatepicker]="datepicker2" >
-      <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
-      <mat-datepicker #datepicker2>
-      </mat-datepicker>
-    </mat-form-field> -->
     <p>
     <label for="shippedOBoard">SHIPPED ON BOARD DATE</label>
     <input type="date" id="shippedOBoard" name="shippedOBoard">
+  </mat-card> -->
+  
+  <mat-card class="customerOrderNumber">
+    <mat-card-title>CUSTOMER ORDER NUMBER</mat-card-title>
+    <hr>
+      <form>
+        <div class="layout-customerONumber">
+            <label >CUSTOMER ORDER NUMBER</label>
+            <input type="text" [(ngModel)]="blDetails.customerOrderNumber" class="form-control" [ngModelOptions]="{standalone: true}">
+            <p class="errMsg"></p>
+        </div>
+        
+        <div class="layout-error">
+            <p class="sccMsg"></p>
+            <p class="errMsg"></p>
+        </div>
+      </form>
   </mat-card>
 </div>
+
+
+  <mat-card class="infomartionofGoods">
+    <mat-card-title>INFORMATION OF GOODS</mat-card-title>
+    <hr>
+    <div class="innerInfoOfGoods">
+
+    <mat-card class="marksAndNumbers">
+      <mat-card-title>MARKS AND NUMBERS</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-marksAndNumbers">
+              <label >MARKS AND NUMBERS</label>
+              <input type="text" [(ngModel)]="blDetails.marksAndNumbers" class="form-control" [ngModelOptions]="{standalone: true}">
+              <p class="errMsg"></p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+
+    <mat-card class="numberOfPackages">
+      <mat-card-title>NUMBER OF PACKAGES</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-numberOfPackages">
+              <label >NUMBER OF PACKAGES</label>
+              <input type="text" [(ngModel)]="blDetails.numberOfPackages" class="form-control" [ngModelOptions]="{standalone: true}">
+              <p class="errMsg"></p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+
+    <mat-card class="descriptionOfGoods">
+      <mat-card-title>DESCRIPTION OF GOODS</mat-card-title>
+      <hr>
+      <form>
+        <!-- <form>
+          <div class="layout-descriptionOfGoods">
+            <label>DESCRIPTION OF GOODS</label>
+            <input type="text" [(ngModel)]="blDetails.descriptionOfGoods" class="form-control"[ngModelOptions]="{standalone: true}" >
+            <p class="errMsg"></p>
+          </div> -->
+          <div class="layout-descriptionOfGoods">
+            <label>DESCRIPTION OF GOODS</label>
+          <mat-form-field fxFlex appearance="none">
+            <textarea matInput
+                      matTextareaAutosize
+                      [matAutosizeMinRows]="2"
+                      [matAutosizeMaxRows]="12"
+                      [(ngModel)]="blDetails.descriptionOfGoods"
+                      [ngModelOptions]="{standalone: true}"></textarea>
+          </mat-form-field>
+          <p class="errMsg"></p>
+          </div>
+
+          <div class="layout-descriptionOfGoods">
+              <label>DESCRIPTION PER PACKAGE</label>
+          <mat-form-field fxFlex appearance="none">
+            <textarea matInput
+                      matTextareaAutosize
+                      [matAutosizeMinRows]="2"
+                      [matAutosizeMaxRows]="12"
+                      [(ngModel)]="blDetails.descriptionPerPackage"
+                      [ngModelOptions]="{standalone: true}"></textarea>
+          </mat-form-field>
+          <p class="errMsg"></p>
+        </div> 
+          <!-- <div class="layout-descriptionOfGoods">
+              <label>DESCRIPTION PER PACKAGE</label>
+              <input type="text" [(ngModel)]="blDetails.descriptionPerPackage" class="form-control" [ngModelOptions]="{standalone: true}">
+              <p class="errMsg"></p>
+          </div> -->
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+       </form> 
+    </mat-card>
+
+    <mat-card class="grossWeight">
+      <mat-card-title>GROSS WEIGHT</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-grossWeight">
+            <label>GROSS WEIGHT</label>
+            <input type="text" [(ngModel)]="blDetails.grossWeight" class="form-control"[ngModelOptions]="{standalone: true}" >
+            <p class="errMsg"></p>
+          </div>
+          
+          <div class="layout-grossWeightUnit">
+              <label>GROSS WEIGHT UNIT</label>
+              <input type="text" [(ngModel)]="blDetails.grossWeightUnit" class="form-control" [ngModelOptions]="{standalone: true}">
+              <p class="errMsg"></p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+
+    <mat-card class="measurement">
+      <mat-card-title>MEASUREMENT</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-measurement">
+              <label >Measurement</label>
+              <input type="text" [(ngModel)]="blDetails.measurement" class="form-control" [ngModelOptions]="{standalone: true}">
+              <p class="errMsg"></p>
+          </div>
+
+          <div class="layout-measurementUnit">
+            <label >Measurement unit</label>
+            <input type="text" [(ngModel)]="blDetails.measurementUnit" class="form-control" [ngModelOptions]="{standalone: true}">
+            <p class="errMsg"></p>
+        </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+
+    <mat-card class="declaredCV">
+      <mat-card-title>DECLARED CARGO VALUE</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-declaredCVAmount">
+              <label>Amount</label>
+              <input type="text" [(ngModel)]="blDetails.declaredCargoValueAmount" class="form-control" [ngModelOptions]="{standalone: true}">
+              <p class="errMsg"></p>
+          </div>
+          
+          <div class="layout-declaredCVCurrency">
+            <label>Currency</label>
+            <input type="text" [(ngModel)]="blDetails.declaredCargoValueCurrency" class="form-control" [ngModelOptions]="{standalone: true}">
+            <p class="errMsg"></p>
+        </div>
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+
+    <mat-card class="additionalInformation">
+      <mat-card-title>ADDITIONALINFORMATION</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-additionalInformation">
+              <label >ADDITIONAL INFORMATION</label>
+              <mat-form-field fxFlex appearance="none">
+                <textarea matInput
+                          matTextareaAutosize
+                          [matAutosizeMinRows]="2"
+                          [matAutosizeMaxRows]="12"
+                          [(ngModel)]="blDetails.additionalInformation"
+                          [ngModelOptions]="{standalone: true}"></textarea>
+              </mat-form-field>
+              <p class="errMsg"></p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+
+    <mat-card class="hazardousMaterial">
+      <mat-card-title>HAZARDOUS MATERIAL</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-hazardousMaterial">
+              <label >Hazardous Material</label>
+              <input type="checkbox" id="hazMat" [(ngModel)]="isChecked" [ngModelOptions]="{standalone: true}" >
+              <p class="errMsg"></p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+  </div>
+
+  <hr>
+
+  <div class="infoOfFreight">
+  <mat-card class="incoterms">
+    <mat-card-title>INCOTERMS</mat-card-title>
+    <hr>
+      <form>
+        <div class="layout-incoterms">
+            <label >INCOTERMS</label>
+            <input type="text" [(ngModel)]="blDetails.incoterms" class="form-control" [ngModelOptions]="{standalone: true}">
+            <p class="errMsg"></p>
+        </div>
+        
+        <div class="layout-error">
+            <p class="sccMsg"></p>
+            <p class="errMsg"></p>
+        </div>
+      </form>
+  </mat-card>
+
+  <mat-card class="freightChargesCurrency">
+    <mat-card-title>FREIGHT AND CHARGES CURRENCY</mat-card-title>
+    <hr>
+    <form>
+      <div class="layout-freightChargesCurrency">
+        <label for="p">prepaid</label>
+        <input type="radio" id="p" name="charges" value="prepaid" (click)="checkCurrency('prepaid')" ngModel>
+        <p></p>
+        <label for="c">collect</label> 
+        <input type="radio" id="c" name="charges" value="collect" (click)="checkCurrency('collect')" ngModel>
+     </div>
+    </form>
+  </mat-card>
+</div>
+</mat-card>
+
+<mat-card class="transportCondition">
+  <mat-card-title>TRANSPORT CONDITIONS</mat-card-title>
+  <hr>
+    <form>
+      <div class="layout-transportCondition">
+          <label>TRANSPORT CONDITIONS</label>
+          <!-- <input type="text" [(ngModel)]="blDetails.transportConditions" class="form-control" [ngModelOptions]="{standalone: true}"> -->
+          <mat-form-field fxFlex appearance="none">
+            <textarea matInput
+                      matTextareaAutosize
+                      [matAutosizeMinRows]="2"
+                      [matAutosizeMaxRows]="12"
+                      [(ngModel)]="blDetails.transportConditions"
+                      [ngModelOptions]="{standalone: true}"></textarea>
+          </mat-form-field>
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-error">
+          <p class="sccMsg"></p>
+          <p class="errMsg"></p>
+      </div>
+    </form>
+</mat-card>
+
+<mat-card class="appliableLaw">
+  <mat-card-title>APPLIABLE LAW</mat-card-title>
+  <hr>
+    <form>
+      <div class="layout-transportCondition">
+          <label>Appliable Law</label>
+          <!-- <input type="text" [(ngModel)]="blDetails.transportConditions" class="form-control" [ngModelOptions]="{standalone: true}"> -->
+          <mat-form-field fxFlex appearance="none">
+            <textarea matInput
+                      matTextareaAutosize
+                      [matAutosizeMinRows]="2"
+                      [matAutosizeMaxRows]="12"
+                      [(ngModel)]="blDetails.applieableLaw"
+                      [ngModelOptions]="{standalone: true}"></textarea
+                      >
+          </mat-form-field>
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-error">
+          <p class="sccMsg"></p>
+          <p class="errMsg"></p>
+      </div>
+    </form>
+</mat-card>
+
+<mat-card class="placeOfJurisdiction">
+  <mat-card-title>PLACE OF JURISDICTION</mat-card-title>
+  <hr>
+    <form>
+      <div class="layout-placeOfJurisdiction">
+          <label>PlaceOfJurisdiction</label>
+          <!-- <input type="text" [(ngModel)]="blDetails.transportConditions" class="form-control" [ngModelOptions]="{standalone: true}"> -->
+          <mat-form-field fxFlex appearance="none">
+            <textarea matInput
+                      matTextareaAutosize
+                      [matAutosizeMinRows]="2"
+                      [matAutosizeMaxRows]="12"
+                      [(ngModel)]="blDetails.placeOfJurisdiction"
+                      [ngModelOptions]="{standalone: true}"></textarea
+                      >
+          </mat-form-field>
+          <p class="errMsg"></p>
+      </div>
+      
+      <div class="layout-error">
+          <p class="sccMsg"></p>
+          <p class="errMsg"></p>
+      </div>
+    </form>
+</mat-card>
+
 <button type="submit" id="submit" (click)="addBL()">Create B/L</button> 
 </div>

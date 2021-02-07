@@ -11,10 +11,10 @@ import { SingleBL } from '../shared/singleBL';
 export class NewComponent implements OnInit {
 
   @Input() blDetails = { 
-    blNumber: "abc",
+    blNumber: "",
     dateOfIssue: "",
     placeOfIssue: "",
-    numberOfBLIssued: 0,
+    numberOfBLIssued: "1",
     shipperName: "",
     shipperAddress: "",
     shipperContact: "",
@@ -34,41 +34,41 @@ export class NewComponent implements OnInit {
     notifyPartyCompanyName: "",
     notifyPartyCompanyAddress: "",
     notifyPartyCompanyLegalForm: "",
-    notifyPartySameAs: false,
+    notifyPartySameAs: "",
     incoterms: "",
     freightChargesCurrency: "",
-    prepaid: false,
-    collect: false,
+    prepaid: "",
+    collect: "",
     portOfLoading: "",
     portOfDischarge: "",
     placeOfReceipt: "",
     placeOfDelivery: "",
     oceanVesselName: "",
     containerNumber: "",
-    fullContainerLoad: false,
-    lessThenContainerLoad: false,
-    dateofReceived: "",
+    fullContainerLoad: "",
+    lessThenContainerLoad: "",
+    cargoRecievedDate: "",
     shippedOnBoardDate: "",
     marksAndNumbers: "",
-    numberOfPackages: 0,
-    grossWeight: 0,
+    numberOfPackages: "1",
+    grossWeight: "1",
     grossWeightUnit: "",
     descriptionOfGoods: "",
     descriptionPerPackage: "",
-    measurement: 0,
+    measurement: "1.1",
     measurementUnit: "",
-    declaredCargoValueAmount: 0,
+    declaredCargoValueAmount: "1",
     declaredCargoValueCurrency: "",
     additionalInformation: "",
-    hazardousMaterial: false,
-    customerOrderNumber: 0,
+    hazardousMaterial: "false",
+    customerOrderNumber: "1",
     transportConditions: "",
     applieableLaw: "",
     placeOfJurisdiction: "",
     orderDate: "",
     orderTo: "",
     orderAt: "",
-    blTransferable: false, 
+    blTransferable: "", 
   }
 
   constructor(
@@ -78,14 +78,17 @@ export class NewComponent implements OnInit {
   ngOnInit() { }
 
   test:SingleBL
+  isChecked : boolean;
 
   addBL() {
+    this.checkHazard();
     this.test = this.blDetails;
     console.log(typeof(this.test));
     console.log(this.test.blNumber);
     console.log(this.test.fullContainerLoad);
     console.log(this.test.lessThenContainerLoad);
-    // this.dataService.createBL("Hallo")
+    console.log(this.test);
+    this.dataService.createBL(this.test)
     // .subscribe((data: {}) => {
     //   console.log(data)
     // })
@@ -93,11 +96,30 @@ export class NewComponent implements OnInit {
 
   checkContainerLoad(value: any){
     if (value == "lessThanContainerLoad"){
-      this.blDetails.lessThenContainerLoad = true;
-      this.blDetails.fullContainerLoad = false;
+      this.blDetails.lessThenContainerLoad = "true";
+      this.blDetails.fullContainerLoad = "false";
     } else if (value == "fullContainerLoad"){
-      this.blDetails.lessThenContainerLoad = false;
-      this.blDetails.fullContainerLoad = true;
+      this.blDetails.lessThenContainerLoad = "false";
+      this.blDetails.fullContainerLoad = "true";
+    }
+  }
+
+  checkCurrency(value: any){
+    if (value == "prepaid"){
+      this.blDetails.prepaid = "true";
+      this.blDetails.collect = "false";
+    } else if (value == "collect"){
+      this.blDetails.prepaid = "false";
+      this.blDetails.collect = "true";
+    }
+  }
+
+  checkHazard(){
+    console.log(this.isChecked);
+    if (this.isChecked == true){
+      this.blDetails.hazardousMaterial = "true";
+    } else if (this.isChecked == false){
+      this.blDetails.hazardousMaterial = "false";
     }
   }
 
