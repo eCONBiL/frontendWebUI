@@ -3,6 +3,9 @@ import { DataService } from '../services/data.service';
 import { Observable } from 'rxjs';
 import { BL } from '../shared/bl';
 import { SingleBL } from '../shared/singleBL';
+import { ViewChild } from '@angular/core';
+import { ElementRef } from '@angular/core';
+import { BlockInfo } from '../shared/blockInfo';
 
 @Component({
   selector: 'app-overview',
@@ -11,15 +14,16 @@ import { SingleBL } from '../shared/singleBL';
 })
 export class OverviewComponent implements OnInit {
 
-  @Input() blKey = ""
 
   bls: BL[] | undefined = undefined;
   bl: SingleBL| undefined = undefined;
+  blockInfo : BlockInfo | undefined = undefined;
 
   constructor(public dataService: DataService) {}
 
   ngOnInit(): void {
-    this.loadAllBL()
+    this.loadAllBL();
+    this.loadBlockInfo();
     
   }
 
@@ -34,19 +38,27 @@ export class OverviewComponent implements OnInit {
     })
   }
 
-  loadSingleBL() {
-    return this.dataService.getSingleBL(this.blKey).subscribe((data: any) => {
-      this.bl = data;
-      console.log(this.bl)
-      console.log(typeof(this.bl))
+  loadBlockInfo(){
+    return this.dataService.getBlockInfo().subscribe((data: BlockInfo) => {
+      this.blockInfo = data;
+      console.log("Hav edone it")
+      console.log(this.blockInfo)
     })
   }
 
-  testSingleBL() {
+  // loadSingleBL() {
+  //   return this.dataService.getSingleBL(this.blKey).subscribe((data: any) => {
+  //     this.bl = data;
+  //     console.log(this.bl)
+  //     console.log(typeof(this.bl))
+  //   })
+  // }
+
+  // testSingleBL() {
   
-      console.log(this.bl.notifyPartyCompanyName)
-      console.log(typeof(this.bl))
-    }
+  //     console.log(this.bl.notifyPartyCompanyName)
+  //     console.log(typeof(this.bl))
+  //   }
   }
 
   

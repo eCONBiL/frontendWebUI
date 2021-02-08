@@ -1,0 +1,268 @@
+#container{
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 20px;
+  }
+
+#innerContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+    /* padding-left: 200px;
+    padding-right: 200px; */
+    padding-top: 20px;
+}
+
+#overviewCheck{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+    
+}
+
+.mat-tab-group {
+    margin-bottom: 48px;
+}
+
+.mat-tab{
+    color: #006491;
+    margin-right: 200px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 8px 12px;
+    margin: 6px 0 0 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+
+p.blView {
+    /* width: 100%;
+    padding: 8px 12px;
+    margin: 6px 0 0 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; */
+    color: #006491;
+} 
+
+input[type=text]:focus {
+    outline: none;
+    box-shadow: 0 0 5px lightgrey;
+}
+
+.labelBLSubmit{
+    color: #006491;
+    text-transform: uppercase;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .labelBLView{
+    color: #006491;
+    text-transform: uppercase;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+
+#submit {
+    background: #006491;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+    width: fit-content;
+    outline: none;
+    margin-left: 35%;
+}
+#submit:hover{
+    background: #006491;
+}
+
+
+textarea{
+    display: grid;
+    text-align: left;
+    width: 100%;
+    padding: 8px 12px;
+    margin: 6px 0 0 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.mat-form-field {
+    display: grid;
+    text-align: left;
+    
+}  
+
+/* .mat-form-field-underline{
+    position: absolute;
+    width: 0%;
+    appearance: none;
+}
+
+.mat-form-field-ripple {
+    width: 0%;
+    appearance: none;
+}
+.mat-form-field-underline.ng-tns-c98-0.ng-star-inserted {
+    appearance: none;
+} */
+
+input[type=date]{
+    outline: none;
+    margin-left: 20px;
+}
+
+input#cargoRDate {
+    margin-left: 33px;
+}
+
+#fcl{
+    margin-left: 60px;
+}
+
+#lcl{
+    margin-left: 25px;
+}
+
+#p{
+    margin-left: 27px;
+}
+
+#c{
+    margin-left: 25px;
+}
+
+#hazMat{
+    margin-left: 25px;
+    margin-top:10px;
+}
+
+mat-card {
+    margin: 10px 10px 10px 10px;
+}
+
+mat-card-title{
+    margin-left: 20px;
+    color: #006491;
+}
+
+#grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-gap: 5px;
+    /* padding-left: 200px;
+    padding-right: 200px; */
+    padding-top: 20px;
+}
+ 
+hr {
+    color :#0474cf;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 5px;
+    margin: 0 20px 20px 20px;
+    box-sizing: border-box;
+    color: black;
+}
+
+
+mat-form-field.mat-form-field.ng-tns-c98-0.mat-primary {
+    margin-top: -1em;
+    margin-bottom: -1.6em;
+}
+mat-form-field.mat-form-field.ng-tns-c98-1.mat-primary.mat-form-field-type-mat-input.mat-form-field-can-float.ng-untouched.ng-pristine.ng-valid {
+    margin-top: -1em;
+    margin-bottom: -1.6em;
+}
+
+mat-form-field.mat-form-field.ng-tns-c98-2.mat-primary {
+    margin-bottom: -1em;
+    margin-top: -1em;
+}
+
+.generellInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.transportInfo{
+    grid-column: 1 / 2 span;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+
+mat-form-field{
+    grid-column: 1/3;
+}
+
+
+mat-card.mat-card.mat-focus-indicator.infomartionofGoods {
+    grid-column: 1/2 span;
+}
+
+.infoOfFreight {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+
+mat-card.customerOrderNumber,.incoterms, .freightChargesCurrency, .marksAndNumbers, .numberOfPackages, .descriptionOfGoods, .grossWeight, .measurement, .declaredCV, .additionalInformation, .hazardousMaterial{
+    outline: none;
+    color: rgb(0, 0, 0);
+    box-shadow: none;
+}
+
+.innerInfoOfGoods{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+
+label {
+    display: inline-block;
+    margin-top: 12px;
+    text-transform: uppercase;
+    color: #A7A7A7;
+    font-size: 12px;
+}
+.errMsg {
+    font-size: 12px;
+    margin: 4px 0 0 0;
+    color: red;
+}
+.sccMsg{
+    font-size: 12px;
+    margin: 0;
+    color: limegreen;
+}
+.layout-shippername, .layout-shipperaddress, .layout-shippercontact, .layout-shipperlegalform, .layout-blnumber, .layout-blIssued, .layout-dateIssued, .layout-placeIssue, .layout-consigneename, .layout-consigneeaddress, .layout-consigneecontact, .layout-consigneelegalform, .layout-agentCname, .layout-agentCaddress, .layout-agentClegalform, .layout-notifyPname, .layout-notifyPaddress, .layout-notifyPlegalform, .layout-consigneeaddress, .layout-portLoading, .layout-portDischarge, .layout-placeReceipt, .layout-placeDelivery, .layout-oceanVessel, .layout-placeContainer, .layout-carrieraddress, .layout-carriercontact, .layout-carrierlegalform,.layout-incoterms,.layout-transportCondition, .layout-descriptionOfGoods, .layout-descriptionOfGoods, .layout-numberOfPackages, .layout-marksAndNumbers, .layout-grossWeight, .layout-grossWeightUnit, .layout-measurement,.layout-measurementUnit, .layout-declaredCVAmount, .layout-declaredCVCurrency, .layout-additionalInformation, .layout-hazardousMaterial, .layout-transportCondition, .layout-placeOfJurisdiction,.layout-error {
+    grid-column: 1/3;
+}
+.layout-error {
+    margin-top: 8px;
+}
+
+.transportCondition, .appliableLaw, .placeOfJurisdiction{
+    grid-column: 1/2 span;
+}

@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { SingleBL } from '../shared/singleBL';
 import { responseFormat } from '../shared/responseFormat';
+import { BlockInfo } from '../shared/blockInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -174,12 +175,36 @@ export class DataService {
     )
   }
 
-
   createBL(bl:SingleBL) {
     console.log(bl)
    this.http.post<any>(this.apiURL + '/createBL', bl ,this.httpOptions)
    .subscribe({ error: e => console.error(e) });
  }
+
+ public getBlockInfo(): Observable<BlockInfo>{
+  return this.http.get<any>(this.apiURL + "/getBlocks" )
+  .pipe(
+   map(item => {
+    return {
+      ...item,
+
+      height: item.height,
+      currentBlockHash: item.currentBlockHash,
+      previousBlockHash: item.previousBlockHash
+     
+     };
+    }),
+    retry(1),
+    catchError(this.handleError)
+  )
+}
+
+transferBL(tranferData) {
+  console.log(tranferData)
+ this.http.post<any>(this.apiURL + '/transferBL', tranferData ,this.httpOptions)
+ .subscribe({ error: e => console.error(e) });
+}
+
 
   handleError(error) {
     let errorMessage = '';

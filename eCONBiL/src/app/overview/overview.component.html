@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<!-- <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" opened class="example-sidenav"  >
         <mat-nav-list *ngIf="bls">
         <mat-list-item *ngFor="let bl of bls">
@@ -13,5 +13,43 @@
         <button (click)="loadSingleBL()"></button>
         <button (click)="testSingleBL()"></button>
     </mat-sidenav-content>
-</mat-sidenav-container>
-
+</mat-sidenav-container>  -->
+<div id="grid-container">
+    <div class="allBL">
+        <label id="allBL">ALL B/L</label> 
+        <hr>
+        <div class="innerAllBL">
+            <mat-card *ngFor="let bl of bls">
+                <mat-card-title>{{bl.record.blNumber}}</mat-card-title>
+                <hr>
+                  <div >
+                    <label >DATE OF ISSUE:</label> <label id="binding">{{bl.record.dateOfIssue}}</label>
+                  </div>
+                  <div >
+                    <label >PLACE OF ISSUE:</label> <label id="binding">{{bl.record.placeOfIssue}}</label>
+                </div>
+                <div >
+                    <label >SHIPPER:</label> <label id="binding">{{bl.record.shipperName}}</label>
+                </div>
+                <div >
+                    <label>CARRIER:</label> <label id="binding">{{bl.record.carrierName}}</label>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div class="allBL" id="second" *ngIf="blockInfo">
+        <label id="allBL">Blockchain</label> 
+        <hr>
+        <mat-card >
+              <div >
+                <label >AMOUNT OF BLOCKS:</label> <label id="binding">{{blockInfo.height}}</label>
+              </div>
+              <div >
+                <label >CURRENT BLOCK HASH:</label> <label id="binding">{{blockInfo.currentBlockHash}}</label>
+            </div>
+            <div >
+                <label >PREVIOUS BLOCK HASH:</label> <label id="binding">{{blockInfo.previousBlockHash}}</label>
+            </div>
+        </mat-card>
+    </div> 
+</div>
