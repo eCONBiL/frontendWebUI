@@ -84,8 +84,20 @@ input[type=text]:focus {
     border-radius: 4px;
     width: fit-content;
     outline: none;
+}
+
+.submitButton{
     margin-left: 35%;
 }
+
+.rightButton{
+    margin-left: 82%;
+}
+
+.transferButton{
+    margin-left: 35%;
+}
+
 #submit:hover{
     background: #006491;
 }
@@ -222,12 +234,23 @@ mat-card.mat-card.mat-focus-indicator.infomartionofGoods {
 
 .infoOfFreight {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
+.infoAfterCreate {
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+}
 
+/* .endorsement{
+    grid-column: 1/2 span;
+}
 
-mat-card.customerOrderNumber,.incoterms, .freightChargesCurrency, .marksAndNumbers, .numberOfPackages, .descriptionOfGoods, .grossWeight, .measurement, .declaredCV, .additionalInformation, .hazardousMaterial{
+DatesOfTransport{
+    grid-column: 1/2 span;
+} */
+
+mat-card.incoterms, .freightChargesCurrency, .marksAndNumbers, .numberOfPackages, .descriptionOfGoods, .grossWeight, .measurement, .declaredCV, .additionalInformation, .hazardousMaterial{
     outline: none;
     color: rgb(0, 0, 0);
     box-shadow: none;

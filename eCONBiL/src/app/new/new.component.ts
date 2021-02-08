@@ -75,7 +75,9 @@ export class NewComponent implements OnInit {
     public dataService: DataService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+
+  }
 
   test:SingleBL
   isChecked : boolean;
@@ -89,6 +91,7 @@ export class NewComponent implements OnInit {
     console.log(this.test.lessThenContainerLoad);
     console.log(this.test);
     this.dataService.createBL(this.test)
+    
     // .subscribe((data: {}) => {
     //   console.log(data)
     // })

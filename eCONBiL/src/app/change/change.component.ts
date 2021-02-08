@@ -11,7 +11,17 @@ import { SingleBL } from '../shared/singleBL';
 })
 export class ChangeComponent implements OnInit {
 
-  @Input() blNumber = ""
+  @Input() blNumber = "";
+
+  @Input() redirectContainer = {
+    blNumber: "",
+    placeOfDelivery:""
+  }
+
+  @Input() changeOceanVessel = {
+    blNumber: "",
+    oceanVesselName:""
+  }
 
   @Input() tranferBL = { 
     blNumber: "",
@@ -20,16 +30,34 @@ export class ChangeComponent implements OnInit {
     notifyPartyCompanyLegalForm: "",
     orderTo: "",
     orderAt: ""
-  }
+  };
+
+  @Input() depreciationBL = { 
+    blNumber: "",
+    numberOfPackages: "1",
+    grossWeight: "1",
+    grossWeightUnit: "",
+    descriptionOfGoods: "",
+    descriptionPerPackage: "",
+    measurement: "1.1",
+    measurementUnit: "",
+    declaredCargoValueAmount: "1",
+    declaredCargoValueCurrency: "",
+    additionalInformation: "",
+    hazardousMaterial: "false"
+  };
 
   bls: BL[] | undefined = undefined;
   bl: SingleBL| undefined = undefined;
   blNumberSubmitted: boolean;
   continuedChange: boolean;
+  isChecked : boolean;
+  date = new Date();
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    console.log(this.date);
     this.loadAllBL();
     this.blNumberSubmitted = false;
     this.continuedChange = false;
@@ -51,13 +79,60 @@ export class ChangeComponent implements OnInit {
     this.continuedChange = false;
   }
 
+  submitDepreciation() {
+    this.checkHazard();
+    this.depreciationBL.blNumber = this.blNumber;
+    console.log(this.depreciationBL);
+    this.dataService.depreciationBL(this.depreciationBL)
+    this.blNumberSubmitted = false;
+    this.continuedChange = false;
+  }
+
+  submitChangeOceanVessel(){
+    this.changeOceanVessel.blNumber = this.blNumber;
+    console.log(this.changeOceanVessel)
+    this.dataService.changeOceanVesselBL(this.changeOceanVessel)
+    this.blNumberSubmitted = false;
+    this.continuedChange = false;
+  }
+
+  submitReturnWithoutLoading(){
+    this.dataService.changeOceanVesselBL(this.blNumber)
+    this.blNumberSubmitted = false;
+    this.continuedChange = false;
+  }
+
+  submitRedirectionContainer(){
+    this.redirectContainer.blNumber = this.blNumber;
+    console.log(this.redirectContainer)
+    this.dataService.redirectContainerBL(this.redirectContainer)
+    this.blNumberSubmitted = false;
+    this.continuedChange = false;
+  }
+
+  submitLoadOnBoard(){
+    this.redirectContainer.blNumber = this.blNumber;
+    console.log(this.redirectContainer)
+    this.dataService.redirectContainerBL(this.redirectContainer)
+    this.blNumberSubmitted = false;
+    this.continuedChange = false;
+  }
+
   submitBL(){
     console.log(this.blNumber);
     return this.dataService.getSingleBL(this.blNumber).subscribe((data: any) => {
       this.bl = data;
       this.blNumberSubmitted = true;
-      console.log(this.bl)
-      console.log(typeof(this.bl))
+      console.log(this.bl);
+      console.log(typeof(this.bl));
+
+      // var element = <HTMLInputElement> document.getElementById("hazMat");
+      // if (this.depreciationBL.hazardousMaterial = "true"){
+      //   element.checked = true;
+      // } else if (this.depreciationBL.hazardousMaterial = "false"){
+      //   element.checked = false;
+      // }
+      
     })
   }
 
@@ -69,6 +144,15 @@ export class ChangeComponent implements OnInit {
     this.continuedChange = true;
     console.log(this.continuedChange);
     console.log(this.blNumberSubmitted);
+  }
+
+  checkHazard(){
+    console.log(this.isChecked);
+    if (this.isChecked == true){
+      this.depreciationBL.hazardousMaterial = "true";
+    } else if (this.isChecked == false){
+      this.depreciationBL.hazardousMaterial = "false";
+    }
   }
 }
 

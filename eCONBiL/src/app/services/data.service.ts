@@ -88,7 +88,7 @@ export class DataService {
             hazardousMaterial: item.Record.HazardousMaterial,
             customerOrderNumber: item.Record.CustomerOrderNumber,
             transportConditions: item.Record.TransportConditions,
-            applieableLaw: item.Record.applieableLaw,
+            applieableLaw: item.Record.ApplieableLaw,
             placeOfJurisdiction: item.Record.PlaceOfJurisdiction,
             orderDate: item.Record.OrderDate,
             orderTo: item.Record.OrderTo,
@@ -138,7 +138,7 @@ export class DataService {
         freightChargesCurrency: item.FreightChargesCurrency,
         prepaid: item.Prepaid,
         collect: item.Collect,
-        portOfLoading: item.PartOfLoading,
+        portOfLoading: item.PortOfLoading,
         portOfDischarge: item.PortOfDischarge,
         placeOfReceipt: item.PlaceOfReceipt,
         placeOfDelivery: item.PlaceOfDelivery,
@@ -162,7 +162,7 @@ export class DataService {
         hazardousMaterial: item.HazardousMaterial,
         customerOrderNumber: item.CustomerOrderNumber,
         transportConditions: item.TransportConditions,
-        applieableLaw: item.applieableLaw,
+        applieableLaw: item.ApplieableLaw,
         placeOfJurisdiction: item.PlaceOfJurisdiction,
         orderDate: item.OrderDate,
         orderTo: item.OrderTo,
@@ -205,6 +205,35 @@ transferBL(tranferData) {
  .subscribe({ error: e => console.error(e) });
 }
 
+depreciationBL(depreciationData) {
+  console.log(depreciationData)
+ this.http.post<any>(this.apiURL + '/depreciationBL', depreciationData ,this.httpOptions)
+ .subscribe({ error: e => console.error(e) });
+}
+
+changeOceanVesselBL(changeOceanVessel) {
+  console.log(changeOceanVessel)
+ this.http.post<any>(this.apiURL + '/changeOceanVesselBL', changeOceanVessel,this.httpOptions)
+ .subscribe({ error: e => console.error(e) });
+}
+
+redirectContainerBL(redirectContainer) {
+  console.log(redirectContainer)
+ this.http.post<any>(this.apiURL + '/redirectContainerBL', redirectContainer ,this.httpOptions)
+ .subscribe({ error: e => console.error(e) });
+}
+
+returnWithoutLoadingBL(returnWithoutLoading) {
+  console.log(returnWithoutLoading)
+ this.http.post<any>(this.apiURL + '/returnWithoutLoadingBL', returnWithoutLoading,this.httpOptions)
+ .subscribe({ error: e => console.error(e) });
+}
+
+loadOnBoardBL(loadOnBoard) {
+  console.log(loadOnBoard)
+ this.http.post<any>(this.apiURL + '/loadOnBoardBL',loadOnBoard ,this.httpOptions)
+ .subscribe({ error: e => console.error(e) });
+}
 
   handleError(error) {
     let errorMessage = '';
