@@ -1077,7 +1077,7 @@
                         <hr>
                         <form>
                           <div class="layout-placeReceipt">
-                              <label >PORT OF Receipt</label>
+                              <label >PLACE OF Receipt</label>
                               <p class="blView">{{bl.placeOfReceipt}}</p>
                           </div>
                           
@@ -2186,7 +2186,7 @@
                         <form>    
                           <div class="layout-shippername">
                               <label>place of delivery</label>
-                              <input type="text" [(ngModel)]="redirectContainer" class="form-control" [ngModelOptions]="{standalone: true}" >
+                              <input type="text" [(ngModel)]="redirectContainer.placeOfDelivery" class="form-control" [ngModelOptions]="{standalone: true}" >
                               <p class="errMsg"></p>
                           </div>
                                  
@@ -2466,7 +2466,7 @@
                         <hr>
                         <form>
                           <div class="layout-placeReceipt">
-                              <label >PORT OF Receipt</label>
+                              <label >PLACE OF Receipt</label>
                               <p class="blView">{{bl.placeOfReceipt}}</p>
                           </div>
                           
@@ -2876,7 +2876,7 @@
                     <form>    
                       <div class="layout-shippername">
                           <label>CARGO RECIEVED DAY</label>
-                          <p>{{date | date:'dd-MM-yyyy'}}</p>
+                          <p>{{date | date:'dd-MM-yyyy hh:mm:ss'}}</p>
                           <p class="errMsg"></p>
                       </div>
                              

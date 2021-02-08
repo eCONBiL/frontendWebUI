@@ -141,7 +141,7 @@ export class DataService {
         portOfLoading: item.PortOfLoading,
         portOfDischarge: item.PortOfDischarge,
         placeOfReceipt: item.PlaceOfReceipt,
-        placeOfDelivery: item.PlaceOfDelivery,
+        placeOfDelivery : item.PlaceOfDelivery,
         oceanVesselName: item.OceanVesselName,
         containerNumber: item.ContainerNumber,
         fullContainerLoad: item.FullContainerLoad, 

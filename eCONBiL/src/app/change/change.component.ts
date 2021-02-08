@@ -13,6 +13,10 @@ export class ChangeComponent implements OnInit {
 
   @Input() blNumber = "";
 
+  @Input() blNumberOnly = {
+    blNumber: ""
+  }
+
   @Input() redirectContainer = {
     blNumber: "",
     placeOfDelivery:""
@@ -97,7 +101,9 @@ export class ChangeComponent implements OnInit {
   }
 
   submitReturnWithoutLoading(){
-    this.dataService.changeOceanVesselBL(this.blNumber)
+    this.blNumberOnly.blNumber = this.blNumber
+    console.log(this.blNumberOnly)
+    this.dataService.returnWithoutLoadingBL(this.blNumberOnly)
     this.blNumberSubmitted = false;
     this.continuedChange = false;
   }
@@ -111,9 +117,9 @@ export class ChangeComponent implements OnInit {
   }
 
   submitLoadOnBoard(){
-    this.redirectContainer.blNumber = this.blNumber;
-    console.log(this.redirectContainer)
-    this.dataService.redirectContainerBL(this.redirectContainer)
+    this.blNumberOnly.blNumber = this.blNumber
+    console.log(this.blNumberOnly)
+    this.dataService.loadOnBoardBL(this.blNumberOnly)
     this.blNumberSubmitted = false;
     this.continuedChange = false;
   }
