@@ -39,7 +39,6 @@ export class DataService {
             blNumber: item.Record.BLNumber,
             dateOfIssue: item.Record.DateOfIssue,
             placeOfIssue: item.Record.PlaceOfIssue,
-            numberOfBLIssued: item.Record.NumberOfBLIssued,
             shipperName: item.Record.ShipperName,
             shipperAddress: item.Record.ShipperAddress,
             shipperContact: item.Record.ShipperContact,
@@ -72,7 +71,6 @@ export class DataService {
             containerNumber: item.Record.ContainerNumber,
             fullContainerLoad: item.Record.FullContainerLoad, 
             lessThenContainerLoad: item.Record.LessThenContainerLoad,
-            cargoRecievedDate: item.Record.CargoRecievedDate,
             shippedOnBoardDate: item.Record.ShippedOnBoardDate,
             marksAndNumbers: item.Record.MarksAndNumbers,
             numberOfPackages: item.Record.NumberOfPackages,
@@ -93,6 +91,7 @@ export class DataService {
             orderDate: item.Record.OrderDate,
             orderTo: item.Record.OrderTo,
             orderAt: item.Record.OrderAt,
+            orderCheckbox: item.Record.OderCheckbox,
             blTransferable: item.Record.BlTransferable
             }
         };
@@ -103,7 +102,7 @@ export class DataService {
     )
   }
 
-  getSingleBL(blKey): Observable<BL>{
+  getSingleBL(blKey): Observable<SingleBL>{
     return this.http.get<any>(this.apiURL + "/singleBL/" + blKey)
     .pipe(
      map(item => {
@@ -113,7 +112,6 @@ export class DataService {
         blNumber: item.BLNumber,
         dateOfIssue: item.DateOfIssue,
         placeOfIssue: item.PlaceOfIssue,
-        numberOfBLIssued: item.NumberOfBLIssued,
         shipperName: item.ShipperName,
         shipperAddress: item.ShipperAddress,
         shipperContact: item.ShipperContact,
@@ -146,7 +144,6 @@ export class DataService {
         containerNumber: item.ContainerNumber,
         fullContainerLoad: item.FullContainerLoad, 
         lessThenContainerLoad: item.LessThenContainerLoad,
-        cargoRecievedDate: item.CargoRecievedDate,
         shippedOnBoardDate: item.ShippedOnBoardDate,
         marksAndNumbers: item.MarksAndNumbers,
         numberOfPackages: item.NumberOfPackages,
@@ -167,6 +164,7 @@ export class DataService {
         orderDate: item.OrderDate,
         orderTo: item.OrderTo,
         orderAt: item.OrderAt,
+        orderCheckbox: item.OderCheckbox,
         blTransferable: item.BlTransferable
        };
       }),

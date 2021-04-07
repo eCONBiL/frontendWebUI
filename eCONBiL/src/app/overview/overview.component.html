@@ -19,7 +19,7 @@
         <label id="allBL">ALL B/L</label> 
         <hr>
         <div class="innerAllBL">
-            <mat-card *ngFor="let bl of bls">
+            <mat-card (click)="getInfo(bl.record.blNumber)" *ngFor="let bl of bls">
                 <mat-card-title>{{bl.record.blNumber}}</mat-card-title>
                 <hr>
                   <div >

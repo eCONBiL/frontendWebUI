@@ -1,3 +1,4 @@
+ <!-- <form [formGroup]="createForm" class="form-inline"> -->
  <div id="grid-container">
   <mat-card class="shipper">
     <mat-card-title>SHIPPEREXPORTER</mat-card-title>
@@ -52,22 +53,7 @@
       </div>
     </form>
   </mat-card>
-  <mat-card class="blIssued">
-    <mat-card-title>NUMBER OF B/L ISSUED</mat-card-title>
-    <hr>
-    <form>
-      <div class="layout-blIssued">
-          <label>number of B/L issued</label>
-          <input type="text" [(ngModel)]="blDetails.numberOfBLIssued" class="form-control" [ngModelOptions]="{standalone: true}">
-          <p class="errMsg"></p>
-      </div>
-      
-      <div class="layout-error">
-          <p class="sccMsg"></p>
-          <p class="errMsg"></p>
-      </div>
-    </form>
-  </mat-card>
+
   <mat-card class="dateIssue">
     <mat-card-title>DATE OF ISSUE</mat-card-title>
     <hr>
@@ -84,6 +70,24 @@
       </div>
     </form>
   </mat-card>
+
+  <mat-card>
+  <mat-card-title>Negotiable Bill of Lading</mat-card-title>
+  <hr>
+  <form>
+    <div class="layout-blIssued">
+        <label>Order Bill of Lading</label>
+        <input type="checkbox" id="orderCheckbox" [(ngModel)]="isCheckedOrder" [ngModelOptions]="{standalone: true}" >
+        <p class="errMsg"></p>
+    </div>
+    
+    <div class="layout-error">
+        <p class="sccMsg"></p>
+        <p class="errMsg"></p>
+    </div>
+  </form>
+</mat-card>
+
   <mat-card class="placeIssue">
     <mat-card-title>PLACE OF ISSUE</mat-card-title>
     <hr>
@@ -103,7 +107,7 @@
 </div>
 
   <mat-card class="consignee">
-    <mat-card-title>CONSIGNEE</mat-card-title>
+    <mat-card-title>CONSIGNEE (optional)</mat-card-title>
     <hr>
     <form>    
       <div class="layout-consigneename">
@@ -214,7 +218,7 @@
   </mat-card>
 
   <mat-card class="forwardingACompany">
-    <mat-card-title>FORWARDING AGENT COMPANY</mat-card-title>
+    <mat-card-title>FORWARDING AGENT COMPANY (optional)</mat-card-title>
     <hr>
     <form>    
       <div class="layout-agentCname">
@@ -454,7 +458,7 @@
           </div>
 
           <div class="layout-descriptionOfGoods">
-              <label>DESCRIPTION PER PACKAGE</label>
+              <label>DESCRIPTION PER PACKAGE (optional)</label>
           <mat-form-field fxFlex appearance="none">
             <textarea matInput
                       matTextareaAutosize
@@ -525,7 +529,7 @@
     </mat-card>
 
     <mat-card class="declaredCV">
-      <mat-card-title>DECLARED CARGO VALUE</mat-card-title>
+      <mat-card-title>DECLARED CARGO VALUE (optional)</mat-card-title>
       <hr>
         <form>
           <div class="layout-declaredCVAmount">
@@ -592,7 +596,7 @@
 
   <div class="infoOfFreight">
   <mat-card class="incoterms">
-    <mat-card-title>INCOTERMS</mat-card-title>
+    <mat-card-title>INCOTERMS (optional)</mat-card-title>
     <hr>
       <form>
         <div class="layout-incoterms">
@@ -703,3 +707,4 @@
 
 <button type="submit" id="submit" (click)="addBL()">CREATE B/L</button> 
 </div>
+<!-- </form> -->

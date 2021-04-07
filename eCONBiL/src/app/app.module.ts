@@ -12,6 +12,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { NewComponent } from './new/new.component';
 import { ChangeComponent } from './change/change.component';
 import { AboutComponent } from './about/about.component';
+import { CreateSuccessComponent } from './create-success/create-success.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AboutComponent } from './about/about.component';
     OverviewComponent,
     NewComponent,
     ChangeComponent,
-    AboutComponent
+    AboutComponent,
+    CreateSuccessComponent
   ],
   imports: [
     BrowserModule,

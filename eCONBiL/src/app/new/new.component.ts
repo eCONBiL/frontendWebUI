@@ -14,7 +14,6 @@ export class NewComponent implements OnInit {
     blNumber: "",
     dateOfIssue: "",
     placeOfIssue: "",
-    numberOfBLIssued: "1",
     shipperName: "",
     shipperAddress: "",
     shipperContact: "",
@@ -47,7 +46,6 @@ export class NewComponent implements OnInit {
     containerNumber: "",
     fullContainerLoad: "",
     lessThenContainerLoad: "",
-    cargoRecievedDate: "",
     shippedOnBoardDate: "",
     marksAndNumbers: "",
     numberOfPackages: "1",
@@ -68,6 +66,7 @@ export class NewComponent implements OnInit {
     orderDate: "",
     orderTo: "",
     orderAt: "",
+    orderCheckbox: true,
     blTransferable: "", 
   }
 
@@ -79,8 +78,9 @@ export class NewComponent implements OnInit {
 
   }
 
-  test:SingleBL
+  test : SingleBL;
   isChecked : boolean;
+  isCheckedOrder : boolean;
 
   addBL() {
     this.checkHazard();
@@ -90,11 +90,8 @@ export class NewComponent implements OnInit {
     console.log(this.test.fullContainerLoad);
     console.log(this.test.lessThenContainerLoad);
     console.log(this.test);
-    this.dataService.createBL(this.test)
-    
-    // .subscribe((data: {}) => {
-    //   console.log(data)
-    // })
+    this.dataService.createBL(this.test);
+
   }
 
   checkContainerLoad(value: any){
@@ -118,6 +115,15 @@ export class NewComponent implements OnInit {
   }
 
   checkHazard(){
+    console.log(this.isCheckedOrder);
+    if (this.isCheckedOrder == true){
+      this.blDetails.orderCheckbox = true;
+    } else if (this.isCheckedOrder == false){
+      this.blDetails.orderCheckbox = false;
+    }
+  }
+
+  checkOrderCheckbox(){
     console.log(this.isChecked);
     if (this.isChecked == true){
       this.blDetails.hazardousMaterial = "true";

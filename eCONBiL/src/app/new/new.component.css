@@ -11,6 +11,10 @@ input[type=text]:focus {
     outline: none;
     box-shadow: 0 0 5px lightgrey;
 }
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px lightgrey;
+}
 
 textarea{
     display: grid;
@@ -69,6 +73,11 @@ input#cargoRDate {
 }
 
 #hazMat{
+    margin-left: 25px;
+    margin-top:10px;
+}
+
+#orderCheckbox{
     margin-left: 25px;
     margin-top:10px;
 }

@@ -2,7 +2,6 @@ export class SingleBL {
     blNumber: string;
     dateOfIssue: string;
     placeOfIssue: string;
-    numberOfBLIssued: string;
     shipperName: string;
     shipperAddress: string;
     shipperContact: string;
@@ -34,7 +33,6 @@ export class SingleBL {
     containerNumber: string;
     fullContainerLoad:string;
     lessThenContainerLoad:string;
-    cargoRecievedDate: string;
     shippedOnBoardDate: string;
     marksAndNumbers: string;
     numberOfPackages: string;
@@ -55,5 +53,6 @@ export class SingleBL {
     orderDate: string;
     orderTo: string;
     orderAt: string;
+    orderCheckbox: boolean;
     blTransferable: string;
 }

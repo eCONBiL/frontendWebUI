@@ -46,6 +46,10 @@ export class OverviewComponent implements OnInit {
     })
   }
 
+  getInfo(blnumber){
+    console.log(blnumber)
+  }
+
   // loadSingleBL() {
   //   return this.dataService.getSingleBL(this.blKey).subscribe((data: any) => {
   //     this.bl = data;
