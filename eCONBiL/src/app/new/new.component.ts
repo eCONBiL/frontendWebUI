@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { BL } from '../shared/bl';
 import { SingleBL } from '../shared/singleBL';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new',
@@ -48,18 +49,18 @@ export class NewComponent implements OnInit {
     lessThenContainerLoad: "",
     shippedOnBoardDate: "",
     marksAndNumbers: "",
-    numberOfPackages: "1",
-    grossWeight: "1",
+    numberOfPackages: "",
+    grossWeight: "",
     grossWeightUnit: "",
     descriptionOfGoods: "",
     descriptionPerPackage: "",
-    measurement: "1.1",
+    measurement: "",
     measurementUnit: "",
-    declaredCargoValueAmount: "1",
+    declaredCargoValueAmount: "",
     declaredCargoValueCurrency: "",
     additionalInformation: "",
-    hazardousMaterial: "false",
-    customerOrderNumber: "1",
+    hazardousMaterial: "",
+    customerOrderNumber: "",
     transportConditions: "",
     applieableLaw: "",
     placeOfJurisdiction: "",
@@ -67,20 +68,22 @@ export class NewComponent implements OnInit {
     orderTo: "",
     orderAt: "",
     orderCheckbox: true,
-    blTransferable: "", 
+    blTransferable: true, 
   }
 
   constructor(
-    public dataService: DataService
+    public dataService: DataService, private router : Router
   ) { }
 
   ngOnInit() { 
-
+    this.blSubmitted = false;
   }
 
   test : SingleBL;
+  bl :SingleBL;
   isChecked : boolean;
   isCheckedOrder : boolean;
+  blSubmitted: boolean;
 
   addBL() {
     this.checkHazard();
@@ -90,7 +93,13 @@ export class NewComponent implements OnInit {
     console.log(this.test.fullContainerLoad);
     console.log(this.test.lessThenContainerLoad);
     console.log(this.test);
+    console.log(this.test.orderCheckbox);
+    this.test.orderCheckbox = true;
+    console.log(this.test.orderCheckbox);
     this.dataService.createBL(this.test);
+    this.bl = this.test;
+    this.blSubmitted = true;
+    // this.router.navigateByUrl('/about');
 
   }
 
@@ -124,12 +133,13 @@ export class NewComponent implements OnInit {
   }
 
   checkOrderCheckbox(){
-    console.log(this.isChecked);
-    if (this.isChecked == true){
-      this.blDetails.hazardousMaterial = "true";
-    } else if (this.isChecked == false){
-      this.blDetails.hazardousMaterial = "false";
-    }
+    // console.log(this.isChecked);
+    // if (this.isChecked == true){
+    //   this.blDetails.hazardousMaterial = "true";
+    // } else if (this.isChecked == false){
+    //   this.blDetails.hazardousMaterial = "false";
+    // }
+    this.isCheckedOrder
   }
 
 }

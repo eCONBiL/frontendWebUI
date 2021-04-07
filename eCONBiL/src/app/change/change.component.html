@@ -1,61 +1,68 @@
 <div id="container">
-    <mat-tab-group mat-align-tabs="center" >
-        <mat-tab label="TRANSFER B/L">
-            <div id="innerContainer" *ngIf="!blNumberSubmitted && !continuedChange">
-                <div></div>
-                <label class="labelBLSubmit">BILL OF LADING NUMBER <p id="submitBL">OF THE B/L TO BE CHANGED:</p></label>
-                <div></div>
-                <div></div>
-                <input type="text" [(ngModel)]="blNumber" class="form-control">
-                <div></div>
-                <div></div>
-                <button class="submitButton" type="submit" id="submit" (click)="submitBL()">SUBMIT B/L NUMBER</button> 
-            </div>
+  <div id="innerContainer" *ngIf="!blNumberSubmitted && !continuedChange">
+    <div></div>
+    <label class="labelBLSubmit">BILL OF LADING NUMBER <p id="submitBL">OF THE B/L TO BE CHANGED:</p></label>
+    <div></div>
+    <div></div>
+    <input type="text" [(ngModel)]="blNumber" class="form-control">
+    <div></div>
+    <div></div>
+    <button class="submitButton" type="submit" id="submit" (click)="submitBL()">SUBMIT B/L NUMBER</button> 
+</div>
+    <mat-tab-group mat-align-tabs="center" *ngIf="blNumberSubmitted" >
+        <mat-tab label="TRANSFER B/L" *ngIf="blNegotiable">
             <div id="innerContainer" *ngIf="continuedChange && blNumberSubmitted">
-                <div></div>
+                <div><button type="submit" id="submit" (click)="backToStart()">  BACK  </button> </div>
+                
                 <mat-card class="shipper">
                     <mat-card-title>TRANSFER B/L</mat-card-title>
                     <hr>
-                    <form>    
+                    <form [formGroup]="transferForm" novalidate>    
+                      <div class="layout-orderTo">
+
+                        <label>ORDER TO</label>
+                        <input class="form-control" formControlName="orderTo" type="text" [(ngModel)]="transferBL.orderTo" class="orderTo" >
+                        <p class="errMsg"></p>
+                        <div *ngIf="transferForm.controls['orderTo'].invalid && (transferForm.controls['orderTo'].dirty || transferForm.controls['orderTo'].touched)" class="alert alert-danger">
+                          <!-- <div *ngIf="transferForm.controls['orderTo'].errors.required">
+                            OrderTo-Name is required.
+                          </div> -->
+                      </div>
+                    </div> 
+
+                    <div class="layout-orderTo">
+                      <label>ORDER AT</label>
+                      <input disabled type="text" [(ngModel)]="valueOrderAt" class="form-control"[ngModelOptions]="{standalone: true}" >
+                      <p class="errMsg"></p>
+                  </div> 
+                           
+                    <div class="layout-error">
+                        <p class="sccMsg"></p>
+                        <p class="errMsg"></p>
+                    </div>
                       <div class="layout-shippername">
-                          <label>notify party company name</label>
-                          <input type="text" [(ngModel)]="tranferBL.notifyPartyCompanyName" class="form-control" [ngModelOptions]="{standalone: true}" >
+                          <label>notify party company name (optional)</label>
+                          <input type="text" [(ngModel)]="transferBL.notifyPartyCompanyName" class="form-control" [ngModelOptions]="{standalone: true}" >
                           <p class="errMsg"></p>
                       </div>
                       
                       <div class="layout-shipperaddress">
-                          <label>notify party company address</label>
-                          <input type="text" [(ngModel)]="tranferBL.notifyPartyCompanyAddress" class="form-control" [ngModelOptions]="{standalone: true}" >
+                          <label>notify party company address (optional)</label>
+                          <input type="text" [(ngModel)]="transferBL.notifyPartyCompanyAddress" class="form-control" [ngModelOptions]="{standalone: true}" >
                           <p class="errMsg"></p>
                       </div>
                       
                       <div class="layout-shippercontact">
-                          <label>notify party company legalform</label>
-                          <input type="text" [(ngModel)]="tranferBL.notifyPartyCompanyLegalForm" class="form-control" [ngModelOptions]="{standalone: true}">
+                          <label>notify party company legalform (optional)</label>
+                          <input type="text" [(ngModel)]="transferBL.notifyPartyCompanyLegalForm" class="form-control" [ngModelOptions]="{standalone: true}">
                           <p class="errMsg"></p>
                       </div>
                       
-                      <div class="layout-shipperlegalform">
-                          <label>ORDER TO</label>
-                          <input type="text" [(ngModel)]="tranferBL.orderTo" class="form-control"[ngModelOptions]="{standalone: true}" >
-                          <p class="errMsg"></p>
-                      </div> 
-
-                      <div class="layout-shipperlegalform">
-                        <label>ORDER AT</label>
-                        <input type="text" [(ngModel)]="tranferBL.orderAt" class="form-control"[ngModelOptions]="{standalone: true}" >
-                        <p class="errMsg"></p>
-                    </div> 
-                             
-                      <div class="layout-error">
-                          <p class="sccMsg"></p>
-                          <p class="errMsg"></p>
-                      </div>
                     </form>
                   </mat-card>
                 <div></div>
                 <div></div>
-                <button class="submitButton" type="submit" id="submit" (click)="submitTransfer()">TRANSFER B/L</button> 
+                <button  [disabled]="transferForm.pristine || transferForm.invalid"class="submitButton" type="submit" id="submit" (click)="submitTransfer()">TRANSFER B/L</button> 
             </div>
             <div id="bl_overview" *ngIf="!continuedChange && blNumberSubmitted">
                 <div id="overviewCheck">
@@ -112,13 +119,14 @@
                         </div>
                       </form>
                     </mat-card>
-                    <mat-card class="blIssued">
+                    <mat-card class="blOrderCheckbox">
                       <mat-card-title>Negotiable Bill of Lading</mat-card-title>
                       <hr>
                       <form>
-                        <div class="layout-blIssued">
-                            <label>number of B/L issued</label>
-                            <p class="blView">{{bl.orderCheckbox}}</p>
+                        <div class="layout-blOrderCheckbox">
+                            <label>Order Bill of Lading</label>
+                            <input *ngIf="!notNegotiable" disabled checked type="checkbox" id="orderCheckbox">
+                            <input *ngIf="notNegotiable" disabled type="checkbox" id="orderCheckbox">
                         </div>
                         
                         <div class="layout-error">
@@ -244,7 +252,12 @@
                             <label>notify party company legalform</label>
                             <p class="blView">{{bl.notifyPartyCompanyLegalForm}}</p>
                         </div>
-                      
+                        
+                        <!-- <div class="layout-notifyPsameAs">
+                            <label>notify party company sames as</label>
+                            <input type="text" [(ngModel)]="blDetails.notifyPartySameAs" class="form-control" >
+                            <p class="errMsg"></p>
+                        </div>  -->
                                
                         <div class="layout-error">
                             <p class="sccMsg"></p>
@@ -722,7 +735,7 @@
                 <button class="submitButton" type="submit" id="submit" (click)="submitBL()">SUBMIT B/L NUMBER</button> 
             </div>
             <div id="innerContainer" *ngIf="continuedChange && blNumberSubmitted">
-                <div></div>
+              <div><button type="submit" id="submit" (click)="backToStart()">  BACK  </button> </div>
                 <mat-card class="shipper">
                     <mat-card-title>DEPRECIATION B/L</mat-card-title>
                     <hr>
@@ -858,13 +871,14 @@
                         </div>
                       </form>
                     </mat-card>
-                    <mat-card class="blIssued">
-                      <mat-card-title>NUMBER OF B/L ISSUED</mat-card-title>
+                    <mat-card class="blOrderCheckbox">
+                      <mat-card-title>Negotiable Bill of Lading</mat-card-title>
                       <hr>
                       <form>
-                        <div class="layout-blIssued">
-                            <label>number of B/L issued</label>
-                            <input type="checkbox" id="orderCheckbox" [(ngModel)]="isChecked" [ngModelOptions]="{standalone: true}" >
+                        <div class="layout-blOrderCheckbox">
+                            <label>Order Bill of Lading</label>
+                            <input *ngIf="!notNegotiable" disabled checked type="checkbox" id="orderCheckbox">
+                            <input *ngIf="notNegotiable" disabled type="checkbox" id="orderCheckbox">
                         </div>
                         
                         <div class="layout-error">
@@ -1372,10 +1386,6 @@
                         <mat-card-title>DATES OF TRANSPORT</mat-card-title>
                         <hr>
                           <form>
-                            <div class="layout-incoterms">
-                                <label >CARGO RECEIVED DATE</label>
-                                <p class="blView">{{bl.cargoRecievedDate}}</p>
-                            </div>
 
                             <div class="layout-incoterms">
                               <label >SHIPPED ON BOARD DATE</label>
@@ -1479,15 +1489,20 @@
                     <button class="submitButton" type="submit" id="submit" (click)="submitBL()">SUBMIT B/L NUMBER</button> 
                 </div>
                 <div id="innerContainer" *ngIf="continuedChange && blNumberSubmitted">
-                    <div></div>
+                  <div><button type="submit" id="submit" (click)="backToStart()">  BACK  </button> </div>
                     <mat-card class="shipper">
                         <mat-card-title>CHANGE OCEAN VESSEL</mat-card-title>
                         <hr>
-                        <form>    
-                          <div class="layout-shippername">
+                        <form [formGroup]="transferForm" novalidate>    
+                          <div class="layout-shippername" class="form-group">
                               <label> new OCEAN VESSEL NAME</label>
-                              <input type="text" [(ngModel)]="changeOceanVessel.oceanVesselName" class="form-control" [ngModelOptions]="{standalone: true}" >
+                              <input class="form-control" formControlName="orderTo" type="text" [(ngModel)]="changeOceanVessel.oceanVesselName" class="form-control" >
                               <p class="errMsg"></p>
+                              <div *ngIf="transferForm.controls['orderTo'].invalid && (transferForm.controls['orderTo'].dirty || transferForm.controls['orderTo'].touched)" class="alert alert-danger">
+                          <!-- <div *ngIf="transferForm.controls['orderTo'].errors.required">
+                            new Ocean-Vessel-Name is required.
+                          </div> -->
+                              </div>
                           </div>
                           <div class="layout-error">
                               <p class="sccMsg"></p>
@@ -1497,7 +1512,7 @@
                       </mat-card>
                     <div></div>
                     <div></div>
-                    <button class="transferButton" type="submit" id="submit" (click)="submitChangeOceanVessel()">CHANGE OCEAN VESSEL</button> 
+                    <button [disabled]="transferForm.pristine || transferForm.invalid" class="transferButton" type="submit" id="submit" (click)="submitChangeOceanVessel()">CHANGE OCEAN VESSEL</button> 
                 </div>
                 <div id="bl_overview" *ngIf="!continuedChange && blNumberSubmitted">
                     <div id="overviewCheck">
@@ -1554,13 +1569,14 @@
                             </div>
                           </form>
                         </mat-card>
-                        <mat-card class="blIssued">
-                          <mat-card-title>NUMBER OF B/L ISSUED</mat-card-title>
+                        <mat-card class="blOrderCheckbox">
+                          <mat-card-title>Negotiable Bill of Lading</mat-card-title>
                           <hr>
                           <form>
-                            <div class="layout-blIssued">
-                                <label>number of B/L issued</label>
-                                <p class="blView">{{bl.numberOfBLIssued}}</p>
+                            <div class="layout-blOrderCheckbox">
+                                <label>Order Bill of Lading</label>
+                                <input *ngIf="!notNegotiable" disabled checked type="checkbox" id="orderCheckbox">
+                            <input *ngIf="notNegotiable" disabled type="checkbox" id="orderCheckbox">
                             </div>
                             
                             <div class="layout-error">
@@ -2068,10 +2084,6 @@
                             <mat-card-title>DATES OF TRANSPORT</mat-card-title>
                             <hr>
                               <form>
-                                <div class="layout-incoterms">
-                                    <label >CARGO RECEIVED DATE</label>
-                                    <p class="blView">{{bl.cargoRecievedDate}}</p>
-                                </div>
     
                                 <div class="layout-incoterms">
                                   <label >SHIPPED ON BOARD DATE</label>
@@ -2365,6 +2377,11 @@
                             <p class="blView">{{bl.notifyPartyCompanyLegalForm}}</p>
                         </div>
                         
+                        <div class="layout-notifyPsameAs">
+                            <label>notify party company sames as</label>
+                            <input type="text" [(ngModel)]="blDetails.notifyPartySameAs" class="form-control" >
+                            <p class="errMsg"></p>
+                        </div> 
                                
                         <div class="layout-error">
                             <p class="sccMsg"></p>
@@ -2807,7 +2824,7 @@
                   </mat-card>
                   
             </div> 
-            </div> 
+            </div>
         </mat-tab> -->
       </mat-tab-group>
 </div>

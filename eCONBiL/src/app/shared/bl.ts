@@ -4,26 +4,31 @@ export interface BL {
         blNumber: string;
         dateOfIssue: string;
         placeOfIssue: string;
-        numberOfBLIssued: string;
+
         shipperName: string;
         shipperAddress: string;
         shipperContact: string;
         shipperLegalForm: string;
+
         consigneeName: string;
         consigneeAddress: string;
         consigneeContact: string;
         consigneeLegalForm: string;
+
         carrierName: string;
         carrierAddress: string;
         carrierContact: string;
         carrierLegalForm: string;
         carrierTrailerNumber: string;
+
         agentCompanyName: string;
         agentCompanyLegalForm: string;
         agentCompanyAddress: string;
+
         notifyPartyCompanyName: string;
         notifyPartyCompanyAddress: string;
         notifyPartyCompanyLegalForm: string;
+
         incoterms: string;
         freightChargesCurrency: string;
         prepaid: string;
@@ -36,8 +41,8 @@ export interface BL {
         containerNumber: string;
         fullContainerLoad:string;
         lessThenContainerLoad:string;
-        cargoRecievedDate: string;
         shippedOnBoardDate: string;
+
         marksAndNumbers: string;
         numberOfPackages: string;
         grossWeight: string;
@@ -50,13 +55,17 @@ export interface BL {
         declaredCargoValueCurrency: string;
         additionalInformation: string;
         hazardousMaterial: string;
+
         customerOrderNumber: string;
+
         transportConditions: string;
         applieableLaw: string;
         placeOfJurisdiction: string;
+
         orderDate: string;
         orderTo: string;
         orderAt: string;
+        orderCheckbox: boolean;
         blTransferable: string;
     };
 }

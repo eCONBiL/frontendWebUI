@@ -1,7 +1,7 @@
  <!-- <form [formGroup]="createForm" class="form-inline"> -->
- <div id="grid-container">
+ <div id="grid-container" *ngIf="!blSubmitted">
   <mat-card class="shipper">
-    <mat-card-title>SHIPPEREXPORTER</mat-card-title>
+    <mat-card-title>SHIPPER</mat-card-title>
     <hr>
     <form>    
       <div class="layout-shippername">
@@ -77,7 +77,7 @@
   <form>
     <div class="layout-blIssued">
         <label>Order Bill of Lading</label>
-        <input type="checkbox" id="orderCheckbox" [(ngModel)]="isCheckedOrder" [ngModelOptions]="{standalone: true}" >
+        <input checked type="checkbox" id="orderCheckbox" [(ngModel)]="isCheckedOrder" [ngModelOptions]="{standalone: true}" >
         <p class="errMsg"></p>
     </div>
     
@@ -107,7 +107,7 @@
 </div>
 
   <mat-card class="consignee">
-    <mat-card-title>CONSIGNEE (optional)</mat-card-title>
+    <mat-card-title>CONSIGNEE</mat-card-title>
     <hr>
     <form>    
       <div class="layout-consigneename">
@@ -183,7 +183,7 @@
   </mat-card>
 
   <mat-card class="notifyparty">
-    <mat-card-title>NOTIFY PARTY</mat-card-title>
+    <mat-card-title>NOTIFY PARTY (optional)</mat-card-title>
     <hr>
     <form>    
       <div class="layout-notifyPname">
@@ -282,7 +282,7 @@
     </mat-card>
 
     <mat-card class="placeReceipt">
-      <mat-card-title>PLACE OF RECEIPT</mat-card-title>
+      <mat-card-title>PLACE OF RECEIPT (optional)</mat-card-title>
       <hr>
       <form>
         <div class="layout-placeReceipt">
@@ -299,7 +299,7 @@
     </mat-card>
 
     <mat-card class="placeDelivery">
-      <mat-card-title>PLACE OF DELIVERY</mat-card-title>
+      <mat-card-title>PLACE OF DELIVERY (optional)</mat-card-title>
       <hr>
       <form>
         <div class="layout-placeDelivery">
@@ -423,7 +423,15 @@
         <form>
           <div class="layout-numberOfPackages">
               <label >NUMBER OF PACKAGES</label>
-              <input type="text" [(ngModel)]="blDetails.numberOfPackages" class="form-control" [ngModelOptions]="{standalone: true}">
+              <!-- <input type="text" [(ngModel)]="blDetails.numberOfPackages" class="form-control" [ngModelOptions]="{standalone: true}"> -->
+              <mat-form-field fxFlex appearance="none">
+                <textarea matInput
+                          matTextareaAutosize
+                          [matAutosizeMinRows]="2"
+                          [matAutosizeMaxRows]="12"
+                          [(ngModel)]="blDetails.numberOfPackages"
+                          [ngModelOptions]="{standalone: true}"></textarea>
+              </mat-form-field>
               <p class="errMsg"></p>
           </div>
           
@@ -551,7 +559,7 @@
     </mat-card>
 
     <mat-card class="additionalInformation">
-      <mat-card-title>ADDITIONALINFORMATION</mat-card-title>
+      <mat-card-title>ADDITIONALINFORMATION (optional)</mat-card-title>
       <hr>
         <form>
           <div class="layout-additionalInformation">
@@ -618,7 +626,7 @@
     <form>
       <div class="layout-freightChargesCurrency">
         <label for="p">prepaid</label>
-        <input type="radio" id="p" name="charges" value="prepaid" (click)="checkCurrency('prepaid')" ngModel>
+        <input checked type="radio" id="p" name="charges" value="prepaid" (click)="checkCurrency('prepaid')" ngModel>
         <p></p>
         <label for="c">collect</label> 
         <input type="radio" id="c" name="charges" value="collect" (click)="checkCurrency('collect')" ngModel>
@@ -708,3 +716,693 @@
 <button type="submit" id="submit" (click)="addBL()">CREATE B/L</button> 
 </div>
 <!-- </form> -->
+
+<div id="bl_overview" *ngIf="blSubmitted">
+  <div id="overviewCheck">
+      <!-- <label class="labelBLView">OVERVIEW </label> -->
+  </div>
+  <div id="grid-container">
+      <mat-card class="shipper">
+        <mat-card-title>SHIPPEREXPORTER</mat-card-title>
+        <hr>
+        <form>    
+          <div class="layout-shippername">
+              <label>shipper name</label>
+              <p class="blView">{{bl.shipperName}}</p>
+          </div>
+          
+          <div class="layout-shipperaddress">
+              <label>shipper address</label>
+              <p class="blView">{{bl.shipperAddress}}</p>
+          </div>
+          
+          <div class="layout-shippercontact">
+              <label>shipper contact</label>
+              <p class="blView">{{bl.shipperContact}}</p>
+          </div>
+          
+          <div class="layout-shipperlegalform">
+              <label>shipper legalform</label>
+              <p class="blView">{{bl.shipperLegalForm}}</p>
+          </div> 
+                 
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+      </mat-card>
+    
+    
+      <div class="generellInfo">
+      <mat-card class="blNumber">
+        <mat-card-title>BILL OF LADING NUMBER</mat-card-title>
+        <hr>
+        <form>
+          <div class="layout-blnumber">
+              <label >Bill of lading number</label>
+              <p class="blView">{{bl.blNumber}}</p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+      </mat-card>
+      <mat-card class="blOrderCheckbox">
+        <mat-card-title>Negotiable Bill of Lading</mat-card-title>
+        <hr>
+        <form>
+          <div class="layout-blOrderCheckbox">
+              <label>Order Bill of Lading</label>
+              <input disabled checked type="checkbox" id="orderCheckbox">
+          </div>
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+      </mat-card>
+      <mat-card class="dateIssue">
+        <mat-card-title>DATE OF ISSUE</mat-card-title>
+        <hr>
+        <form>
+          <div class="layout-dateIssued">
+              <label>date of issue</label>
+              <p class="blView">{{bl.dateOfIssue}}</p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+      </mat-card>
+      <mat-card class="placeIssue">
+        <mat-card-title>PLACE OF ISSUE</mat-card-title>
+        <hr>
+        <form>
+          <div class="layout-placeIssue">
+              <label>place of issue</label>
+              <p class="blView">{{bl.placeOfIssue}}</p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+    
+      <mat-card class="consignee">
+        <mat-card-title>CONSIGNEE</mat-card-title>
+        <hr>
+        <form>    
+          <div class="layout-consigneename">
+              <label>consignee name</label>
+              <p class="blView"> {{bl.consigneeName}}</p>
+          </div>
+          
+          <div class="layout-consigneeaddress">
+              <label>consignee address</label>
+              <p class="blView">{{bl.consigneeAddress}}</p>
+          </div>
+          
+          <div class="layout-consigneecontact">
+              <label>consignee contact</label>
+              <p class="blView">{{bl.consigneeContact}}</p>
+          </div>
+          
+          <div class="layout-consigneelegalform">
+              <label >consignee legalform</label>
+              <p class="blView">{{bl.consigneeLegalForm}}</p>
+          </div> 
+                 
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+      </mat-card>
+    
+      <mat-card class="carrier">
+        <mat-card-title>CARRIER</mat-card-title>
+        <hr>
+        <form>    
+          <div class="layout-carriername">
+              <label>carrier name</label>
+              <p class="blView">{{bl.carrierName}}</p>
+          </div>
+    
+          <div class="layout-carriertrailerNumber">
+            <label>carrier trailer number</label>
+            <p class="blView">{{bl.carrierTrailerNumber}}</p>
+        </div>
+          
+          <div class="layout-carrieraddress">
+              <label>carrier address</label>
+              <p class="blView">{{bl.carrierAddress}}</p>
+          </div>
+          
+          <div class="layout-carriercontact">
+              <label>carrier contact</label>
+              <p class="blView">{{bl.carrierContact}}</p>
+          </div>
+          
+          <div class="layout-carrierlegalform">
+              <label>carrier legalform</label>
+              <p class="blView">{{bl.carrierLegalForm}}</p>
+          </div> 
+                 
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+      </mat-card>
+    
+      <mat-card class="notifyparty">
+        <mat-card-title>NOTIFY PARTY</mat-card-title>
+        <hr>
+        <form>    
+          <div class="layout-notifyPname">
+              <label>notify party company name</label>
+              <p class="blView">{{bl.notifyPartyCompanyName}}</p>
+          </div>
+          
+          <div class="layout-notifyPaddress">
+              <label >notify party companyaddress</label>
+              <p class="blView">{{bl.notifyPartyCompanyAddress}}</p>
+          </div>
+          
+          <div class="layout-notifyPlegalform">
+              <label>notify party company legalform</label>
+              <p class="blView">{{bl.notifyPartyCompanyLegalForm}}</p>
+          </div>
+          
+          <!-- <div class="layout-notifyPsameAs">
+              <label>notify party company sames as</label>
+              <input type="text" [(ngModel)]="blDetails.notifyPartySameAs" class="form-control" >
+              <p class="errMsg"></p>
+          </div>  -->
+                 
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+      </mat-card>
+    
+      <mat-card class="forwardingACompany">
+        <mat-card-title>FORWARDING AGENT COMPANY</mat-card-title>
+        <hr>
+        <form>    
+          <div class="layout-agentCname">
+              <label >Agent Company Name</label>
+              <p class="blView">{{bl.agentCompanyName}}</p>
+          </div>
+          
+          <div class="layout-agentCaddress">
+              <label >agent company address</label>
+              <p class="blView">{{bl.agentCompanyAddress}}</p>
+          </div>
+          
+          <div class="layout-agentClegalform">
+              <label>agent company legalform</label>
+              <p class="blView">{{bl.agentCompanyLegalForm}}</p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+      </mat-card>
+    
+      <div class="transportInfo">
+        <mat-card class="portloading">
+          <mat-card-title>PORT OF LOADING</mat-card-title>
+          <hr>
+          <form>
+            <div class="layout-portLoading">
+                <label >PORT OF LOADING</label>
+                <p class="blView">{{bl.portOfLoading}}</p>
+            </div>
+            
+            <div class="layout-error">
+                <p class="sccMsg"></p>
+                <p class="errMsg"></p>
+            </div>
+          </form>
+        </mat-card>
+    
+        <mat-card class="portDischarge">
+          <mat-card-title>PORT OF DISCHARGE</mat-card-title>
+          <hr>
+          <form>
+            <div class="layout-portDischarge">
+                <label >PORT OF Discharge</label>
+                <p class="blView">{{bl.portOfDischarge}}</p>
+            </div>
+            
+            <div class="layout-error">
+                <p class="sccMsg"></p>
+                <p class="errMsg"></p>
+            </div>
+          </form>                                                                                                                                  
+        </mat-card>
+    
+        <mat-card class="placeReceipt">
+          <mat-card-title>PLACE OF RECEIPT </mat-card-title>
+          <hr>
+          <form>
+            <div class="layout-placeReceipt">
+                <label >PORT OF Receipt</label>
+                <p class="blView">{{bl.placeOfReceipt}}</p>
+            </div>
+            
+            <div class="layout-error">
+                <p class="sccMsg"></p>
+                <p class="errMsg"></p>
+            </div>
+          </form>
+        </mat-card>
+    
+        <mat-card class="placeDelivery">
+          <mat-card-title>PLACE OF DELIVERY </mat-card-title>
+          <hr>
+          <form>
+            <div class="layout-placeDelivery">
+                <label >PLACE OF delivery</label>
+                <p class="blView">{{bl.placeOfDelivery}}</p>
+            </div>
+            
+            <div class="layout-error">
+                <p class="sccMsg"></p>
+                <p class="errMsg"></p>
+            </div>
+          </form>
+        </mat-card>
+    
+        <mat-card class="oceanVessel">
+          <mat-card-title>OCEAN VESSEL</mat-card-title>
+          <hr>
+          <form>
+            <div class="layout-oceanVessel">
+                <label >ocean vessel name</label>
+                <p class="blView">{{bl.oceanVesselName}}</p>
+            </div>
+            
+            <div class="layout-error">
+                <p class="sccMsg"></p>
+                <p class="errMsg"></p>
+            </div>
+          </form>
+        </mat-card>
+    
+        <mat-card class="container">
+          <mat-card-title>CONTAINER</mat-card-title>
+          <hr>
+          <form>
+            <div class="layout-placeContainer">
+                <label >CONTAINER NUMBER</label>
+                <p class="blView">{{bl.containerNumber}}</p>
+            </div>
+            
+            <div class="layout-error">
+                <p class="sccMsg"></p>
+                <p class="errMsg"></p>
+            </div>
+          </form>
+        </mat-card>
+    
+      <mat-card class="containerload">
+        <mat-card-title>CONTAINER LOAD</mat-card-title>
+        <hr>
+        <form>
+          <div class="layout-placeContainer">
+            <label for="fcl">Full container load</label>
+            <input disabled type="radio" id="fcl" name="containerLoad" value="fullContainerLoad" checked="checked"> 
+            <p></p>
+            <label>Less than container load </label> 
+            <input disabled type="radio" id="lcl" name="containerLoad" value="lessThanContainerLoad" > 
+         </div>
+        </form>
+      </mat-card>
+      
+      <mat-card class="customerOrderNumber">
+        <mat-card-title>CUSTOMER ORDER NUMBER</mat-card-title>
+        <hr>
+          <form>
+            <div class="layout-customerONumber">
+                <label >CUSTOMER ORDER NUMBER</label>
+                <p class="blView">{{bl.customerOrderNumber}}</p>
+            </div>
+            
+            <div class="layout-error">
+                <p class="sccMsg"></p>
+                <p class="errMsg"></p>
+            </div>
+          </form>
+      </mat-card>
+    </div>
+    
+    
+      <mat-card class="infomartionofGoods">
+        <mat-card-title>INFORMATION OF GOODS</mat-card-title>
+        <hr>
+        <div class="innerInfoOfGoods">
+    
+        <mat-card class="marksAndNumbers">
+          <mat-card-title>MARKS AND NUMBERS</mat-card-title>
+          <hr>
+            <form>
+              <div class="layout-marksAndNumbers">
+                  <label >MARKS AND NUMBERS</label>
+                  <p class="blView">{{bl.marksAndNumbers}}</p>
+              </div>
+              
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+            </form>
+        </mat-card>
+    
+        <mat-card class="numberOfPackages">
+          <mat-card-title>NUMBER OF PACKAGES</mat-card-title>
+          <hr>
+            <form>
+              <div class="layout-numberOfPackages">
+                  <label >NUMBER OF PACKAGES</label>
+                  <p class="blView">{{bl.numberOfPackages}}</p>
+              </div>
+              
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+            </form>
+        </mat-card>
+    
+        <mat-card class="descriptionOfGoods">
+          <mat-card-title>DESCRIPTION OF GOODS</mat-card-title>
+          <hr>
+          <form>
+              <div class="layout-descriptionOfGoods">
+                <label>DESCRIPTION OF GOODS</label>
+                <p class="blView">{{bl.descriptionOfGoods}}</p>
+              </div>
+    
+              <div class="layout-descriptionOfGoods">
+                  <label>DESCRIPTION PER PACKAGE</label>
+                  <p class="blView">{{bl.descriptionPerPackage}}</p>
+            </div> 
+              
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+           </form> 
+        </mat-card>
+    
+        <mat-card class="grossWeight">
+          <mat-card-title>GROSS WEIGHT</mat-card-title>
+          <hr>
+            <form>
+              <div class="layout-grossWeight">
+                <label>GROSS WEIGHT</label>
+                <p class="blView">{{bl.grossWeight}}</p>
+              </div>
+              
+              <div class="layout-grossWeightUnit">
+                  <label>GROSS WEIGHT UNIT</label>
+                  <p class="blView">{{bl.grossWeightUnit}}</p>
+              </div>
+              
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+            </form>
+        </mat-card>
+    
+        <mat-card class="measurement">
+          <mat-card-title>MEASUREMENT</mat-card-title>
+          <hr>
+            <form>
+              <div class="layout-measurement">
+                  <label >Measurement</label>
+                  <p class="blView">{{bl.measurement}}</p>
+              </div>
+    
+              <div class="layout-measurementUnit">
+                <label >Measurement unit</label>
+                <p class="blView">{{bl.measurementUnit}}</p>
+            </div>
+              
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+            </form>
+        </mat-card>
+    
+        <mat-card class="declaredCV">
+          <mat-card-title>DECLARED CARGO VALUE</mat-card-title>
+          <hr>
+            <form>
+              <div class="layout-declaredCVAmount">
+                  <label>Amount</label>
+                  <p class="blView">{{bl.declaredCargoValueAmount}}</p>
+              </div>
+              
+              <div class="layout-declaredCVCurrency">
+                <label>Currency</label>
+                <p class="blView">{{bl.declaredCargoValueCurrency}}</p>
+            </div>
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+            </form>
+        </mat-card>
+    
+        <mat-card class="additionalInformation">
+          <mat-card-title>ADDITIONALINFORMATION</mat-card-title>
+          <hr>
+            <form>
+              <div class="layout-additionalInformation">
+                  <label >ADDITIONAL INFORMATION</label>
+                  <p class="blView">{{bl.additionalInformation}}</p>
+              </div>
+              
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+            </form>
+        </mat-card>
+    
+        <mat-card class="hazardousMaterial">
+          <mat-card-title>HAZARDOUS MATERIAL</mat-card-title>
+          <hr>
+            <form>
+              <div class="layout-hazardousMaterial">
+                  <label >Hazardous Material</label>
+                  <input disabled type="checkbox" id="hazMat"  >
+                  <p class="errMsg"></p>
+              </div>
+              
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+            </form>
+        </mat-card>
+      </div>
+    
+      <hr>
+    
+      <div class="infoOfFreight">
+      <mat-card class="incoterms">
+        <mat-card-title>INCOTERMS</mat-card-title>
+        <hr>
+          <form>
+            <div class="layout-incoterms">
+                <label >INCOTERMS</label>
+                <p class="blView">{{bl.incoterms}}</p>
+            </div>
+            
+            <div class="layout-error">
+                <p class="sccMsg"></p>
+                <p class="errMsg"></p>
+            </div>
+          </form>
+      </mat-card>
+    
+      <mat-card class="freightChargesCurrency">
+        <mat-card-title>FREIGHT AND CHARGES CURRENCY</mat-card-title>
+        <hr>
+        <form>
+          <div class="layout-freightChargesCurrency">
+            <label for="p">prepaid</label>
+            <input disabled type="radio" id="p" name="charges" value="prepaid" checked="checked"> 
+            <p></p>
+            <label for="c">collect</label> 
+            <input disabled type="radio" id="c" name="charges" value="collect"> 
+         </div>
+        </form>
+      </mat-card>
+      </div>
+    </mat-card>
+
+      <mat-card class="endorsement">
+          <mat-card-title>ENDORSEMENT</mat-card-title>
+          <hr>
+            <form>
+              <div class="layout-incoterms">
+                  <label >ORDER TO</label>
+                  <p class="blView">{{bl.orderTo}}</p>
+              </div>
+
+              <div class="layout-incoterms">
+                <label >order AT</label>
+                <p class="blView">{{bl.orderAt}}</p>
+             </div>
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+            </form>
+        </mat-card>
+
+        <mat-card class="DatesOfTransport">
+          <mat-card-title>DATES OF TRANSPORT</mat-card-title>
+          <hr>
+            <form>
+
+              <div class="layout-incoterms">
+                <label >SHIPPED ON BOARD DATE</label>
+                <p class="blView">{{bl.shippedOnBoardDate}}</p>
+             </div>
+              <div class="layout-error">
+                  <p class="sccMsg"></p>
+                  <p class="errMsg"></p>
+              </div>
+            </form>
+        </mat-card>
+
+    <mat-card class="transportCondition">
+      <mat-card-title>TRANSPORT CONDITIONS</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-transportCondition">
+              <label>TRANSPORT CONDITIONS</label>
+              <p class="blView">{{bl.transportConditions}}</p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+
+    
+    <mat-card class="appliableLaw">
+      <mat-card-title>APPLIABLE LAW</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-transportCondition">
+              <label>Appliable Law</label>
+              <p class="blView">{{bl.applieableLaw}}</p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+    
+    <mat-card class="placeOfJurisdiction">
+      <mat-card-title>PLACE OF JURISDICTION</mat-card-title>
+      <hr>
+        <form>
+          <div class="layout-placeOfJurisdiction">
+              <label>PlaceOfJurisdiction</label>
+              <p class="blView">{{bl.placeOfJurisdiction}}</p>
+          </div>
+          
+          <div class="layout-error">
+              <p class="sccMsg"></p>
+              <p class="errMsg"></p>
+          </div>
+        </form>
+    </mat-card>
+    
+</div> 
+</div>
+
+
+
+<!-- <div class="container">
+  <h1>
+    Welcome to {{title}}!!
+  </h1>
+  <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+            <label>Name:</label>
+            <input class="form-control" formControlName="name" type="text">
+        </div>
+        <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['name'].errors.required">
+              Name is required.
+            </div>
+        </div>
+         <div class="form-group">
+            <label>Address:</label>
+            <input class="form-control" formControlName="address" type="text">
+        </div>
+        <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
+            <div *ngIf="angForm.controls['address'].errors.required">
+              email is required.
+            </div>
+        </div>
+        <button type="submit"
+            [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+            Save
+        </button>
+  </form>
+  <br />
+  <p>Form value: {{ angForm.value | json }}</p>
+  <p>Form status: {{ angForm.status | json }}</p>
+</div> -->
+
+<!-- <div layout="row">
+
+  <div *ngFor="let a of cardsArray">
+      <mat-card class="card-card">  
+          <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>IT29TB92881102020233</mat-card-title>
+              <mat-card-subtitle>Deposit</mat-card-subtitle>
+          </mat-card-header>
+  
+          <mat-card-content>
+          <p>
+              Valid thru <b>02/23</b>
+          </p>
+          </mat-card-content>
+          <mat-card-actions>
+              <button mat-button><mat-icon>list_alt</mat-icon>See Statement</button>
+              <button mat-button><mat-icon>share</mat-icon>Copy Requisites</button>
+          </mat-card-actions>
+      </mat-card>
+  </div>
+  </div>
+  
+  -->

@@ -39,30 +39,37 @@ export class DataService {
             blNumber: item.Record.BLNumber,
             dateOfIssue: item.Record.DateOfIssue,
             placeOfIssue: item.Record.PlaceOfIssue,
+
             shipperName: item.Record.ShipperName,
             shipperAddress: item.Record.ShipperAddress,
             shipperContact: item.Record.ShipperContact,
             shipperLegalForm: item.Record.ShipperLegalForm,
+
             consigneeName: item.Record.ConsigneeName,
             consigneeAddress: item.Record.ConsigneeAddress,
             consigneeContact: item.Record.ConsigneeContact,
             consigneeLegalForm: item.Record.ConsigneeLegalForm,
+
             carrierName: item.Record.CarrierName,
             carrierAddress: item.Record.CarrierAddress,
             carrierContact: item.Record.CarrierContact,
             carrierLegalForm: item.Record.CarrierLegalForm,
             carrierTrailerNumber: item.Record.CarrierTrailerNumber,
+
             agentCompanyName: item.Record.AgentCompanyName,
             agentCompanyLegalForm: item.Record.AgentCompanyLegalForm,
             agentCompanyAddress: item.Record.AgentCompanyAddress,
+
             notifyPartyCompanyName: item.Record.NotifyPartyCompanyName,
             notifyPartyCompanyAddress: item.Record.NotifyPartyCompanyAddress,
             notifyPartyCompanyLegalForm: item.Record.NotifyPartyCompanyLegalForm,
-            notifyPartySameAs: item.Record.NotifyPartySameAs,
+            
             incoterms: item.Record.Incoterms,
+
             freightChargesCurrency: item.Record.FreightChargesCurrency,
             prepaid: item.Record.Prepaid,
             collect: item.Record.Collect,
+
             portOfLoading: item.Record.PartOfLoading,
             portOfDischarge: item.Record.PortOfDischarge,
             placeOfReceipt: item.Record.PlaceOfReceipt,
@@ -72,6 +79,7 @@ export class DataService {
             fullContainerLoad: item.Record.FullContainerLoad, 
             lessThenContainerLoad: item.Record.LessThenContainerLoad,
             shippedOnBoardDate: item.Record.ShippedOnBoardDate,
+
             marksAndNumbers: item.Record.MarksAndNumbers,
             numberOfPackages: item.Record.NumberOfPackages,
             grossWeight: item.Record.GrossWeight,
@@ -84,10 +92,13 @@ export class DataService {
             declaredCargoValueCurrency: item.Record.DeclaredCargoValueCurrency,
             additionalInformation: item.Record.AdditionalInformation,
             hazardousMaterial: item.Record.HazardousMaterial,
+
             customerOrderNumber: item.Record.CustomerOrderNumber,
+
             transportConditions: item.Record.TransportConditions,
             applieableLaw: item.Record.ApplieableLaw,
             placeOfJurisdiction: item.Record.PlaceOfJurisdiction,
+
             orderDate: item.Record.OrderDate,
             orderTo: item.Record.OrderTo,
             orderAt: item.Record.OrderAt,
@@ -113,29 +124,36 @@ export class DataService {
         dateOfIssue: item.DateOfIssue,
         placeOfIssue: item.PlaceOfIssue,
         shipperName: item.ShipperName,
+
         shipperAddress: item.ShipperAddress,
         shipperContact: item.ShipperContact,
         shipperLegalForm: item.ShipperLegalForm,
+
         consigneeName: item.ConsigneeName,
         consigneeAddress: item.ConsigneeAddress,
         consigneeContact: item.ConsigneeContact,
         consigneeLegalForm: item.ConsigneeLegalForm,
+
         carrierName: item.CarrierName,
         carrierAddress: item.CarrierAddress,
         carrierContact: item.CarrierContact,
         carrierLegalForm: item.CarrierLegalForm,
         carrierTrailerNumber: item.CarrierTrailerNumber,
+
         agentCompanyName: item.AgentCompanyName,
         agentCompanyLegalForm: item.AgentCompanyLegalForm,
         agentCompanyAddress: item.AgentCompanyAddress,
+
         notifyPartyCompanyName: item.NotifyPartyCompanyName,
         notifyPartyCompanyAddress: item.NotifyPartyCompanyAddress,
         notifyPartyCompanyLegalForm: item.NotifyPartyCompanyLegalForm,
-        notifyPartySameAs: item.NotifyPartySameAs,
+
         incoterms: item.Incoterms,
+
         freightChargesCurrency: item.FreightChargesCurrency,
         prepaid: item.Prepaid,
         collect: item.Collect,
+
         portOfLoading: item.PortOfLoading,
         portOfDischarge: item.PortOfDischarge,
         placeOfReceipt: item.PlaceOfReceipt,
@@ -145,6 +163,7 @@ export class DataService {
         fullContainerLoad: item.FullContainerLoad, 
         lessThenContainerLoad: item.LessThenContainerLoad,
         shippedOnBoardDate: item.ShippedOnBoardDate,
+
         marksAndNumbers: item.MarksAndNumbers,
         numberOfPackages: item.NumberOfPackages,
         grossWeight: item.GrossWeight,
@@ -157,14 +176,17 @@ export class DataService {
         declaredCargoValueCurrency: item.DeclaredCargoValueCurrency,
         additionalInformation: item.AdditionalInformation,
         hazardousMaterial: item.HazardousMaterial,
+
         customerOrderNumber: item.CustomerOrderNumber,
+
         transportConditions: item.TransportConditions,
         applieableLaw: item.ApplieableLaw,
         placeOfJurisdiction: item.PlaceOfJurisdiction,
+
         orderDate: item.OrderDate,
         orderTo: item.OrderTo,
         orderAt: item.OrderAt,
-        orderCheckbox: item.OderCheckbox,
+        OrderCheckbox: item.OderCheckbox,
         blTransferable: item.BlTransferable
        };
       }),
@@ -215,17 +237,17 @@ changeOceanVesselBL(changeOceanVessel) {
  .subscribe({ error: e => console.error(e) });
 }
 
-redirectContainerBL(redirectContainer) {
-  console.log(redirectContainer)
- this.http.post<any>(this.apiURL + '/redirectContainerBL', redirectContainer ,this.httpOptions)
- .subscribe({ error: e => console.error(e) });
-}
+// redirectContainerBL(redirectContainer) {
+//   console.log(redirectContainer)
+//  this.http.post<any>(this.apiURL + '/redirectContainerBL', redirectContainer ,this.httpOptions)
+//  .subscribe({ error: e => console.error(e) });
+// }
 
-returnWithoutLoadingBL(returnWithoutLoading) {
-  console.log(returnWithoutLoading)
- this.http.post<any>(this.apiURL + '/returnWithoutLoadingBL', returnWithoutLoading,this.httpOptions)
- .subscribe({ error: e => console.error(e) });
-}
+// returnWithoutLoadingBL(returnWithoutLoading) {
+//   console.log(returnWithoutLoading)
+//  this.http.post<any>(this.apiURL + '/returnWithoutLoadingBL', returnWithoutLoading,this.httpOptions)
+//  .subscribe({ error: e => console.error(e) });
+// }
 
 loadOnBoardBL(loadOnBoard) {
   console.log(loadOnBoard)
