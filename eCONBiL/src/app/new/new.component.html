@@ -72,11 +72,11 @@
   </mat-card>
 
   <mat-card>
-  <mat-card-title>Negotiable Bill of Lading</mat-card-title>
+  <mat-card-title>NEGOTIABLE BILL OF LADING</mat-card-title>
   <hr>
   <form>
     <div class="layout-blIssued">
-        <label>Order Bill of Lading</label>
+        <label>Negotiable Bill of Lading</label>
         <input checked type="checkbox" id="orderCheckbox" [(ngModel)]="isCheckedOrder" [ngModelOptions]="{standalone: true}" >
         <p class="errMsg"></p>
     </div>
@@ -667,7 +667,6 @@
     <form>
       <div class="layout-transportCondition">
           <label>Appliable Law</label>
-          <!-- <input type="text" [(ngModel)]="blDetails.transportConditions" class="form-control" [ngModelOptions]="{standalone: true}"> -->
           <mat-form-field fxFlex appearance="none">
             <textarea matInput
                       matTextareaAutosize
@@ -693,7 +692,6 @@
     <form>
       <div class="layout-placeOfJurisdiction">
           <label>PlaceOfJurisdiction</label>
-          <!-- <input type="text" [(ngModel)]="blDetails.transportConditions" class="form-control" [ngModelOptions]="{standalone: true}"> -->
           <mat-form-field fxFlex appearance="none">
             <textarea matInput
                       matTextareaAutosize
@@ -714,12 +712,11 @@
 </mat-card>
 
 <button type="submit" id="submit" (click)="addBL()">CREATE B/L</button> 
+<p></p>
 </div>
-<!-- </form> -->
 
 <div id="bl_overview" *ngIf="blSubmitted">
-  <div id="overviewCheck">
-      <!-- <label class="labelBLView">OVERVIEW </label> -->
+  <div id="overviewCheck">   
   </div>
   <div id="grid-container">
       <mat-card class="shipper">

@@ -13,6 +13,7 @@ import { NewComponent } from './new/new.component';
 import { ChangeComponent } from './change/change.component';
 import { AboutComponent } from './about/about.component';
 import { CreateSuccessComponent } from './create-success/create-success.component';
+import { SharedOverviewComponent } from './shared-overview/shared-overview.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CreateSuccessComponent } from './create-success/create-success.componen
     NewComponent,
     ChangeComponent,
     AboutComponent,
-    CreateSuccessComponent
+    CreateSuccessComponent,
+    SharedOverviewComponent
   ],
   imports: [
     BrowserModule,

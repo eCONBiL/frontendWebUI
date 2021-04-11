@@ -1,26 +1,12 @@
-<!-- <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened class="example-sidenav"  >
-        <mat-nav-list *ngIf="bls">
-        <mat-list-item *ngFor="let bl of bls">
-            <button class="listButton">  {{bl.record.blNumber}} </button>
-        </mat-list-item>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content class="main-content">
-        <div class="form-group">
-            <input type="text" [(ngModel)]="blKey" class="form-control" placeholder="Key">
-        </div>
-        <button (click)="loadSingleBL()"></button>
-        <button (click)="testSingleBL()"></button>
-    </mat-sidenav-content>
-</mat-sidenav-container>  -->
+
 <div id="grid-container">
     <div class="allBL">
         <label id="allBL">ALL B/L</label> 
         <hr>
         <div class="innerAllBL">
             <mat-card (click)="getInfo(bl.record.blNumber)" *ngFor="let bl of bls">
-                <mat-card-title>{{bl.record.blNumber}}</mat-card-title>
+                <mat-card-title>
+                    <a [routerLink]="['/overviewSingleBL', bl.record.blNumber]">{{bl.record.blNumber}}</a></mat-card-title>
                 <hr>
                   <div >
                     <label >DATE OF ISSUE:</label> <label id="binding">{{bl.record.dateOfIssue}}</label>
@@ -40,6 +26,7 @@
     <div class="allBL" id="second" *ngIf="blockInfo">
         <label id="allBL">Blockchain</label> 
         <hr>
+        <div class="innerBlockchain">
         <mat-card >
               <div >
                 <label >AMOUNT OF BLOCKS:</label> <label id="binding">{{blockInfo.height}}</label>
@@ -51,5 +38,7 @@
                 <label >PREVIOUS BLOCK HASH:</label> <label id="binding">{{blockInfo.previousBlockHash}}</label>
             </div>
         </mat-card>
+    </div>
     </div> 
+    <p></p>
 </div>

@@ -78,6 +78,10 @@ header a {
     text-decoration: none;
 } 
 
+a:active{
+  text-decoration: underline;
+}
+
 hr {
   color:rgb(255, 0, 0);
 }
