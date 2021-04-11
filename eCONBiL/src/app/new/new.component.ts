@@ -84,6 +84,8 @@ export class NewComponent implements OnInit {
   isChecked : boolean;
   isCheckedOrder : boolean;
   blSubmitted: boolean;
+  success: any;
+  a: number;
 
   addBL() {
     this.checkHazard();
@@ -99,8 +101,13 @@ export class NewComponent implements OnInit {
     this.dataService.createBL(this.test);
     this.bl = this.test;
     this.blSubmitted = true;
-    // this.router.navigateByUrl('/about');
 
+  }
+
+  routingButton(){
+    const url = '/overviewSingleBL/' + this.test.blNumber;
+    console.log(url)
+    this.router.navigateByUrl(url)
   }
 
   checkContainerLoad(value: any){

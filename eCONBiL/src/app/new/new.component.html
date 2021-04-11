@@ -333,7 +333,7 @@
     </mat-card>
 
     <mat-card class="container">
-      <mat-card-title>CONTAINER</mat-card-title>
+      <mat-card-title>CONTAINER NUMBER</mat-card-title>
       <hr>
       <form>
         <div class="layout-placeContainer">
@@ -559,7 +559,7 @@
     </mat-card>
 
     <mat-card class="additionalInformation">
-      <mat-card-title>ADDITIONALINFORMATION (optional)</mat-card-title>
+      <mat-card-title>ADDITIONAL INFORMATION (optional)</mat-card-title>
       <hr>
         <form>
           <div class="layout-additionalInformation">
@@ -691,7 +691,7 @@
   <hr>
     <form>
       <div class="layout-placeOfJurisdiction">
-          <label>PlaceOfJurisdiction</label>
+          <label>Place Of Jurisdiction</label>
           <mat-form-field fxFlex appearance="none">
             <textarea matInput
                       matTextareaAutosize
@@ -715,7 +715,13 @@
 <p></p>
 </div>
 
-<div id="bl_overview" *ngIf="blSubmitted">
+<div *ngIf="blSubmitted">
+  <mat-spinner></mat-spinner>
+  <button class="success" (click)="routingButton()"></button>
+</div>
+
+
+<!-- <div id="bl_overview" *ngIf="blSubmitted">
   <div id="overviewCheck">   
   </div>
   <div id="grid-container">
@@ -899,11 +905,11 @@
               <p class="blView">{{bl.notifyPartyCompanyLegalForm}}</p>
           </div>
           
-          <!-- <div class="layout-notifyPsameAs">
+           <div class="layout-notifyPsameAs">
               <label>notify party company sames as</label>
               <input type="text" [(ngModel)]="blDetails.notifyPartySameAs" class="form-control" >
               <p class="errMsg"></p>
-          </div>  -->
+          </div>  
                  
           <div class="layout-error">
               <p class="sccMsg"></p>
@@ -1330,7 +1336,7 @@
       <hr>
         <form>
           <div class="layout-placeOfJurisdiction">
-              <label>PlaceOfJurisdiction</label>
+              <label>Place Of Jurisdiction</label>
               <p class="blView">{{bl.placeOfJurisdiction}}</p>
           </div>
           
@@ -1342,7 +1348,7 @@
     </mat-card>
     
 </div> 
-</div>
+</div> -->
 
 
 
