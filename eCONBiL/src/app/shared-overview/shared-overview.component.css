@@ -199,8 +199,8 @@ mat-card-title{
     display: grid;
     grid-template-columns: 1fr 1fr ;
     grid-gap: 5px;
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-top: 20px;
 }
  

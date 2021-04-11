@@ -106,10 +106,9 @@ mat-card-title{
     display: grid;
     grid-template-columns: 1fr 1fr ;
     grid-gap: 5px;
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-top: 20px;
-    background-color: aquamarine;
 }
  
 hr {
@@ -140,12 +139,11 @@ mat-form-field.mat-form-field.ng-tns-c98-2.mat-primary {
     margin-top: -1em;
 } */
 
+
 .generellInfo {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 5px;
-    width: 100%;
-    background-color: red;
 }
 
 .transportInfo{
