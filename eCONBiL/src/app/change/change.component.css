@@ -86,6 +86,11 @@ input[type=text]:focus {
     outline: none;
 }
 
+.mat-spinner{
+    margin-left: 35%;
+    height: 20%;
+}
+
 #submit:disabled {
     background: #bdbdbd;
     border: none;
@@ -101,6 +106,9 @@ input[type=text]:focus {
     margin-left: 35%;
 }
 
+Button#submit.submitButton:focus{
+    background-color: #bdbdbd;
+}
 
 
 .rightButton{
