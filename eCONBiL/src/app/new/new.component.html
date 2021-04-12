@@ -406,7 +406,14 @@
         <form>
           <div class="layout-marksAndNumbers">
               <label >MARKS AND NUMBERS</label>
-              <input type="text" [(ngModel)]="blDetails.marksAndNumbers" class="form-control" [ngModelOptions]="{standalone: true}">
+              <mat-form-field fxFlex appearance="none">
+                <textarea matInput
+                          matTextareaAutosize
+                          [matAutosizeMinRows]="2"
+                          [matAutosizeMaxRows]="12"
+                          [(ngModel)]="blDetails.marksAndNumbers"
+                          [ngModelOptions]="{standalone: true}"></textarea>
+              </mat-form-field>
               <p class="errMsg"></p>
           </div>
           
@@ -423,15 +430,8 @@
         <form>
           <div class="layout-numberOfPackages">
               <label >NUMBER OF PACKAGES</label>
-              <!-- <input type="text" [(ngModel)]="blDetails.numberOfPackages" class="form-control" [ngModelOptions]="{standalone: true}"> -->
-              <mat-form-field fxFlex appearance="none">
-                <textarea matInput
-                          matTextareaAutosize
-                          [matAutosizeMinRows]="2"
-                          [matAutosizeMaxRows]="12"
-                          [(ngModel)]="blDetails.numberOfPackages"
-                          [ngModelOptions]="{standalone: true}"></textarea>
-              </mat-form-field>
+              <input type="text" [(ngModel)]="blDetails.numberOfPackages" class="form-control" [ngModelOptions]="{standalone: true}"> 
+              
               <p class="errMsg"></p>
           </div>
           
